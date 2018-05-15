@@ -1,32 +1,28 @@
 language: node_js
 
 node_js:
-  - 7
-  - 6
-
-# Dependencies for `canvas` (required by `d3`)
-# See https://github.com/Automattic/node-canvas/blob/master/.travis.yml
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - libcairo2-dev
-      - libjpeg8-dev
-      - libpango1.0-dev
-      - libgif-dev
-      - g++-4.9
-env:
-  - CXX=g++-4.9
+  - 8
 
 cache:
   directories:
     - node_modules
 
 script:
-  - make lint
-  - make cover
-  - make docs
+  - npm run lint
+  - npm run check
+  - npm run cover
+  - npm run docs
 
+# Upload test coverage to codecov
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+# Deploy documentation to Github Pages
+# See https://docs.travis-ci.com/user/deployment/pages/
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  local-dir: docs
+  on:
+    branch: master

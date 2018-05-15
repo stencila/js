@@ -1,8 +1,4 @@
-/node_modules
-/npm-debug.log
+/.nyc_output
 /coverage
-/*.sublime-workspace
-/tests/document/documents
-/tmp
-/.sandbox
-/build
+/node_modules
+/docs

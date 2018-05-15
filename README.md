@@ -1,8 +1,19 @@
 ## `stencila/js` : Stencila for Javascript
 
-> What was here is now [there](https://github.com/stencila/stencila)
-> -- _Us, 2017_
+[![NPM](http://img.shields.io/npm/v/stencila-js.svg?style=flat)](https://www.npmjs.com/package/stencila-js)
+[![Build status](https://travis-ci.org/stencila/js.svg?branch=master)](https://travis-ci.org/stencila/js)
+[![Code coverage](https://codecov.io/gh/stencila/js/branch/master/graph/badge.svg)](https://codecov.io/gh/stencila/js)
+[![Dependency status](https://david-dm.org/stencila/js.svg)](https://david-dm.org/stencila/js)
+[![Chat](https://badges.gitter.im/stencila/stencila.svg)](https://gitter.im/stencila/stencila)
 
-In other words, we've merged the code that used to be here into the [stencila/stencila](https://github.com/stencila/stencila) repo. If you're interested in what was here, checkout the [museum](https://github.com/stencila/js/tree/museum) branch.
+Provides a `JavascriptContext` for executing Javascript code from within Stencila documents.
 
-This repo will self destruct at 2017-04-30T15:58:40+13:00 (ora few weeks either side, to be less precise).
+### Install
+
+```bash
+npm install stencila-js
+```
+
+### See also
+
+The `NodeContext` in the [`stencila/node`](https://github.com/stencila/node) repository is derived from the `JavascriptContext` in this repo.
