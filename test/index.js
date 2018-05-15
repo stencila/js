@@ -1,4 +1,4 @@
-// An index files for tests for getting correct coverage
+// A test index file for getting correct coverage
 // reporting when using `esm` with `nyc`
 
-require('./JavascriptContext.test.js')
+import './JavascriptContext.test.js'
