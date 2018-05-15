@@ -27,10 +27,6 @@ const GLOBALS = [
 
 /**
  * An execution context for Javascript
- *
- * Although this currently resides in the `stencila/node` repository,
- * it is intended for eventual use within the browser by
- * replacing the `JsContext in `stencila/stencila`
  */
 export default class JavascriptContext extends Context {
   constructor (host, name) {
@@ -412,6 +408,9 @@ export default class JavascriptContext extends Context {
     return func
   }
 
+  /**
+   * Execute a cell
+   */
   async execute (cell) {
     // At present, the received cell may not have
     // all the things we need (e.g. outputs etc) from a
@@ -522,6 +521,11 @@ export default class JavascriptContext extends Context {
     return cell
   }
 
+  /**
+   * Evaluate a `call` node
+   *
+   * @override
+   */
   async evaluateCall (call) {
     // Get the function
     const func = await this.evaluate(call.func)
@@ -596,6 +600,11 @@ export default class JavascriptContext extends Context {
     return call
   }
 
+  /**
+   * Evaluate a `get` node
+   *
+   * @override
+   */
   async evaluateGet (get) {
     // Currently, this just iterates over registered libraries looking
     // for a value with the name
