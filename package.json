@@ -4,11 +4,11 @@
   "description": "Stencila for Javascript",
   "scripts": {
     "lint": "standard src/**/*.js test/**/*.js",
-    "test": "tape --require esm test/**/*test.js | tap-spec",
-    "cover": "nyc npm test",
+    "test": "node --require esm test | tap-spec",
+    "cover": "nyc --require esm node test",
     "docs": "esdoc",
     "prepublishOnly": "npm run lint && npm run test && npm run docs",
-    "clean": "rimraf .nyc_output docs"
+    "clean": "rimraf coverage .nyc_output docs"
   },
   "repository": {
     "type": "git",
