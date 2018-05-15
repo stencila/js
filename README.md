@@ -14,6 +14,17 @@ Provides a `JavascriptContext` for executing Javascript code from within Stencil
 npm install stencila-js
 ```
 
+### Develop
+
+```bash
+git clone git@github.com:stencila/js.git
+cd js
+npm install
+npm run lint
+npm test
+npm run cover
+```
+
 ### See also
 
 The `NodeContext` in the [`stencila/node`](https://github.com/stencila/node) repository is derived from the `JavascriptContext` in this repo.
