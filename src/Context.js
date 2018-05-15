@@ -1,3 +1,8 @@
+/**
+ * Base class for execution contexts
+ *
+ * For example, used in `stencila/node` as the base class for `SqliteContext`.
+ */
 export default class Context {
   constructor (host, name) {
     this._host = host
@@ -35,6 +40,12 @@ export default class Context {
     }
   }
 
+  /**
+   * Compile a cell
+   *
+   * Returns a cell with expected properties for use in
+   * overriding  `compile` methods in derived classes.
+   */
   async compile (cell) {
     let source
     if (typeof cell === 'string' || cell instanceof String) {
@@ -59,10 +70,18 @@ export default class Context {
     }
   }
 
+  /**
+   * Execute a cell
+   *
+   * This method will almost always be overidden
+   */
   async execute (cell) {
     return cell
   }
 
+  /**
+   * Evaluate a node in an execution tree
+   */
   async evaluate (node) {
     switch (node.type) {
       case 'get': return this.evaluateGet(node)
