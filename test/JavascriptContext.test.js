@@ -1,7 +1,7 @@
-const test = require('tape')
+import test from 'tape'
 
-const { testAsync } = require('./helpers')
-const JavascriptContext = require('../src/JavascriptContext')
+import { testAsync } from './helpers'
+import JavascriptContext from '../src/JavascriptContext'
 
 test('JavascriptContext', assert => {
   const context = new JavascriptContext()

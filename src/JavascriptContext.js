@@ -1,9 +1,9 @@
-const acorn = require('acorn')
-const doctrine = require('doctrine')
-const { generate } = require('astring')
-const walk = require('acorn/dist/walk')
+import acorn from 'acorn'
+import doctrine from 'doctrine'
+import { generate } from 'astring'
+import walk from 'acorn/dist/walk'
 
-const Context = require('./Context')
+import Context from './Context'
 
 /**
  * Global variable names that should be ignored when determining
@@ -32,7 +32,7 @@ const GLOBALS = [
  * it is intended for eventual use within the browser by
  * replacing the `JsContext in `stencila/stencila`
  */
-class JavascriptContext extends Context {
+export default class JavascriptContext extends Context {
   constructor (host, name) {
     super(host, name)
 
@@ -613,5 +613,3 @@ JavascriptContext.spec = {
   name: 'JavascriptContext',
   client: 'ContextHttpClient'
 }
-
-module.exports = JavascriptContext

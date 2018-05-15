@@ -1,4 +1,4 @@
-class Context {
+export default class Context {
   constructor (host, name) {
     this._host = host
     this._name = name
@@ -72,4 +72,3 @@ class Context {
   }
 }
 
-module.exports = Context

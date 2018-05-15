@@ -4,7 +4,7 @@
   "description": "Stencila for Javascript",
   "scripts": {
     "lint": "standard src/**/*.js test/**/*.js",
-    "test": "tape test/**/*test.js | tap-spec",
+    "test": "tape --require esm test/**/*test.js | tap-spec",
     "cover": "nyc npm test",
     "docs": "esdoc",
     "prepublishOnly": "npm run lint && npm run test && npm run docs",
@@ -32,6 +32,7 @@
   "devDependencies": {
     "esdoc": "^1.1.0",
     "esdoc-standard-plugin": "^1.0.0",
+    "esm": "^3.0.34",
     "nyc": "^11.7.3",
     "rimraf": "^2.6.2",
     "standard": "^11.0.1",
