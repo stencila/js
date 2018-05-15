@@ -2,10 +2,12 @@
   "name": "stencila-js",
   "version": "0.25.0",
   "description": "Stencila for Javascript",
+  "main": "dist/stencila-js.cjs.js",
   "scripts": {
     "lint": "standard src/**/*.js test/**/*.js",
     "test": "node --require esm test | tap-spec",
-    "cover": "nyc --require esm node test",
+    "cover": "nyc --require esm --reporter=lcov --reporter=text node test",
+    "build": "rollup -c",
     "docs": "esdoc",
     "prepublishOnly": "npm run lint && npm run test && npm run docs",
     "clean": "rimraf coverage .nyc_output docs"
@@ -35,6 +37,10 @@
     "esm": "^3.0.34",
     "nyc": "^11.7.3",
     "rimraf": "^2.6.2",
+    "rollup": "^0.58.2",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-uglify": "^3.0.0",
     "standard": "^11.0.1",
     "tap-spec": "^4.1.1",
     "tape": "^4.9.0"
@@ -46,12 +52,6 @@
       {
         "name": "esdoc-standard-plugin"
       }
-    ]
-  },
-  "nyc": {
-    "reporter": [
-      "lcov",
-      "text"
     ]
   },
   "dependencies": {

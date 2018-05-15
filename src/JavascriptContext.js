@@ -1,6 +1,6 @@
-import acorn from 'acorn'
-import doctrine from 'doctrine'
+import { parse } from 'acorn'
 import { generate } from 'astring'
+import doctrine from 'doctrine'
 import walk from 'acorn/dist/walk'
 
 import Context from './Context'
@@ -125,7 +125,7 @@ export default class JavascriptContext extends Context {
     let ast
     let docs = []
     try {
-      ast = acorn.parse(source, {
+      ast = parse(source, {
         sourceType: 'module',
         onComment: (block, text) => {
           if (block) docs.push(text)

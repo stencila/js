@@ -13,6 +13,9 @@ test:
 cover:
 	npm run cover
 
+build:
+	npm run build
+
 docs:
 	npm run docs
 .PHONY: docs
