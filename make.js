@@ -21,7 +21,7 @@ b.task('bundle:doctrine', () => {
   })
 })
 
-// bundling the lib with rollup
+// bundling the lib with rollup for browsers
 // the browser bundle needs an alias for 'doctrine'
 // pointing to the generated doctrine browser bundle
 b.task('build:lib:browser', ['bundle:doctrine'], () => {
@@ -41,6 +41,7 @@ b.task('build:lib:browser', ['bundle:doctrine'], () => {
   })
 })
 
+// bundling the lib with rollup for node
 b.task('build:lib:node', () => {
   b.js('src/index.js', {
     output: [
@@ -54,6 +55,7 @@ b.task('build:lib:node', () => {
   })
 })
 
+// bundling tests for use in the browser
 b.task('build:test:browser', ['bundle:doctrine'], () => {
   b.js('test/index.js', {
     output: [

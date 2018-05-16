@@ -6,8 +6,9 @@
   "scripts": {
     "lint": "standard src/**/*.js test/**/*.js",
     "test": "node --require esm test | tap-spec",
+    "test-browser": "node make test:browser",
     "cover": "nyc --require esm --reporter=lcov --reporter=text node test",
-    "build": "rollup -c",
+    "build": "node make build",
     "docs": "esdoc",
     "prepublishOnly": "npm run lint && npm run test && npm run docs",
     "clean": "rimraf coverage .nyc_output docs"

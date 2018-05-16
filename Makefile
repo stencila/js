@@ -10,6 +10,11 @@ test:
 	npm test
 .PHONY: test
 
+test-browser:
+	npm run test-browser
+	@echo Now open test/index.html
+.PHONY: test
+
 cover:
 	npm run cover
 
