@@ -1,36 +1,53 @@
 let b = require('substance-bundler')
 let path = require('path')
 
-b.rm('tmp')
-
-b.browserify('./node_modules/doctrine/lib/doctrine.js', {
-  dest: './tmp/doctrine.browser.js',
-  exports: ['default'],
-  debug: false
+b.task('clean', () => {
+  b.rm('tmp')
+  b.rm('dist')
 })
 
-b.js('src/index.js', {
-  output: [
-    {
-      file: 'dist/stencila-js.min.js',
-      format: 'umd',
-      name: 'StencilaJs',
-    }
-  ],
-  alias: {
-    'doctrine': path.join(__dirname, 'tmp', 'doctrine.browser.js')
-  },
-  commonjs: true,
-  minify: true
+b.task('default', ['clean', 'build'])
+
+b.task('build', ['build:lib:browser', 'build:lib:node'])
+
+// bundling doctrine with browserify
+b.task('bundle:doctrine', () => {
+  b.browserify('./node_modules/doctrine/lib/doctrine.js', {
+    dest: './tmp/doctrine.browser.js',
+    exports: ['default'],
+    debug: false
+  })
 })
 
-b.js('src/index.js', {
-  output: [
-    {
-      file: 'dist/stencila-js.cjs.js',
-      format: 'cjs',
-    }
-  ],
-  external: ['doctrine'],
-  commonjs: true
+// bundling the lib with rollup
+// the browser bundle needs an alias for 'doctrine'
+// pointing to the generated doctrine browser bundle
+b.task('build:lib:browser', ['bundle:doctrine'], () => {
+  b.js('src/index.js', {
+    output: [
+      {
+        file: 'dist/stencila-js.min.js',
+        format: 'umd',
+        name: 'StencilaJs',
+      }
+    ],
+    alias: {
+      'doctrine': path.join(__dirname, 'tmp', 'doctrine.browser.js')
+    },
+    commonjs: true,
+    minify: true
+  })
+})
+
+b.task('build:lib:node', () => {
+  b.js('src/index.js', {
+    output: [
+      {
+        file: 'dist/stencila-js.cjs.js',
+        format: 'cjs',
+      }
+    ],
+    external: ['doctrine'],
+    commonjs: true
+  })
 })
