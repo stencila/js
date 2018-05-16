@@ -30,7 +30,7 @@ b.task('build:lib:browser', ['bundle:doctrine'], () => {
       {
         file: 'dist/stencila-js.min.js',
         format: 'umd',
-        name: 'StencilaJs',
+        name: 'StencilaJs'
       }
     ],
     alias: {
@@ -46,7 +46,7 @@ b.task('build:lib:node', () => {
     output: [
       {
         file: 'dist/stencila-js.cjs.js',
-        format: 'cjs',
+        format: 'cjs'
       }
     ],
     external: ['doctrine'],

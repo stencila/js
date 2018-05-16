@@ -10,7 +10,7 @@ import test from 'tape'
  * @param  {Function} func Async test function
  */
 
-export function testAsync(name, func) {
+export function testAsync (name, func) {
   test(name, async assert => {
     try {
       await func(assert)

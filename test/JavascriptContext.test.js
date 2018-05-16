@@ -238,7 +238,7 @@ testAsync('JavascriptContext.compile expression', async assert => {
 testAsync('JavascriptContext.compile function', async assert => {
   let context = new JavascriptContext()
 
-  function afunc(x, y) { return x * y }
+  function afunc (x, y) { return x * y }
 
   assert.deepEqual(
     await context.compile(afunc),
