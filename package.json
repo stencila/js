@@ -37,7 +37,7 @@
     "esdoc": "^1.1.0",
     "esdoc-standard-plugin": "^1.0.0",
     "esm": "^3.0.34",
-    "nyc": "^11.7.3",
+    "nyc": "^11.8.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.58.2",
     "rollup-plugin-commonjs": "^9.1.3",
