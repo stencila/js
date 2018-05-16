@@ -238,7 +238,8 @@ testAsync('JavascriptContext.compile expression', async assert => {
 testAsync('JavascriptContext.compile function', async assert => {
   let context = new JavascriptContext()
 
-  function afunc (x, y) { return x * y }
+  function afunc(x, y) { return x * y }
+
   assert.deepEqual(
     await context.compile(afunc),
     {
@@ -371,14 +372,14 @@ testAsync('JavascriptContext.compile function', async assert => {
   const src1 = `
     /**
      * Function description
-     * 
+     *
      * @title Function title
      * @summary Function summary
      *
      * @example <caption>Example caption</caption>
      *
      * funcname(1, 2, 3, 4)
-     * 
+     *
      * @example
      *
      * funcname(x, y, z)
