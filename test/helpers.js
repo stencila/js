@@ -1,4 +1,4 @@
-const test = require('tape')
+import test from 'tape'
 
 /**
  * Test an async function
@@ -9,7 +9,8 @@ const test = require('tape')
  * @param  {String} name Name of test
  * @param  {Function} func Async test function
  */
-var testAsync = (name, func) => {
+
+export function testAsync (name, func) {
   test(name, async assert => {
     try {
       await func(assert)
@@ -19,8 +20,4 @@ var testAsync = (name, func) => {
       assert.end()
     }
   })
-}
-
-module.exports = {
-  testAsync
 }

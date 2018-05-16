@@ -28,6 +28,18 @@ npm test
 npm run cover
 ```
 
+To run tests in the browser:
+
+```bash
+npm run test-browser 
+```
+
+There's also a `Makefile` if you prefer to run tasks that way e.g.
+
+```bash
+make lint cover test-browser
+```
+
 ### See also
 
 The `NodeContext` in the [`stencila/node`](https://github.com/stencila/node) repository is derived from the `JavascriptContext` in this repo.
