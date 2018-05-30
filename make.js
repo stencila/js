@@ -32,16 +32,16 @@ b.task('build:lib:browser', ['bundle:doctrine'], () => {
   b.js('src/index.js', {
     output: [
       {
-        file: 'dist/stencila-js.min.js',
+        file: 'dist/stencila-js.js',
         format: 'umd',
-        name: 'StencilaJs'
+        name: 'stencilaJs'
       }
     ],
     alias: {
       'doctrine': path.join(__dirname, 'tmp', 'doctrine.browser.js')
     },
-    commonjs: COMMONJS_OPTS,
-    minify: true
+    commonjs: COMMONJS_OPTS
+    // minify: true
   })
 })
 
