@@ -120,9 +120,16 @@ export default class JavascriptContext {
   async evaluateCall (call) {
     const func = this.resolve(call.func)
     let { args, namedArgs } = await collectArgs(func, call, { unpack: (v) => this.unpack(v) })
+    let value
+    if (namedArgs) {
+      value = func.body(...args, namedArgs)
+    } else {
+      value = func.body(...args)
+    }
     // Execute the actual function call
-    let value = namedArgs ? func.body(...args, namedArgs) : func.body(...args)
-    if (value !== undefined) call.value = await this.pack(value)
+    if (value !== undefined) {
+      call.value = await this.pack(value)
+    }
     return call
   }
 

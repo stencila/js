@@ -51,7 +51,8 @@ export default async function collectArgs (func, call, hooks) {
           if (arg) argsUsed++
         }
         if (!arg && !param.default) {
-          throw new Error(`Function parameter "${param.name}" must be supplied`)
+          let msg = `Function '${func.name}' requires parameter '${param.name}'`
+          throw new Error(msg)
         }
         if (arg) args.push(await unpack(arg))
         else args.push(undefined)
