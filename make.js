@@ -21,6 +21,10 @@ b.task('bundle:doctrine', () => {
   })
 })
 
+const COMMONJS_OPTS = {
+  namedExports: { 'acorn/dist/walk.js': [ 'simple', 'base', 'ancestor' ] }
+}
+
 // bundling the lib with rollup for browsers
 // the browser bundle needs an alias for 'doctrine'
 // pointing to the generated doctrine browser bundle
@@ -36,7 +40,7 @@ b.task('build:lib:browser', ['bundle:doctrine'], () => {
     alias: {
       'doctrine': path.join(__dirname, 'tmp', 'doctrine.browser.js')
     },
-    commonjs: true,
+    commonjs: COMMONJS_OPTS,
     minify: true
   })
 })
@@ -51,7 +55,7 @@ b.task('build:lib:node', () => {
       }
     ],
     external: ['doctrine'],
-    commonjs: true
+    commonjs: COMMONJS_OPTS
   })
 })
 
@@ -72,6 +76,6 @@ b.task('build:test:browser', ['bundle:doctrine'], () => {
       'doctrine': path.join(__dirname, 'tmp', 'doctrine.browser.js')
     },
     external: [ 'tape' ],
-    commonjs: true
+    commonjs: COMMONJS_OPTS
   })
 })
