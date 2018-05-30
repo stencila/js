@@ -4,13 +4,13 @@
   "description": "Stencila for Javascript",
   "main": "dist/stencila-js.cjs.js",
   "scripts": {
+    "prepack": "npm install && npm run build && npm run docs",
     "lint": "standard src/**/*.js test/**/*.js",
     "test": "node --require esm test | tap-spec",
     "test-browser": "node make test:browser",
     "cover": "nyc --require esm --reporter=lcov --reporter=text node test",
     "build": "node make build",
     "docs": "esdoc",
-    "prepublishOnly": "npm run lint && npm run test && npm run docs && npm run build",
     "clean": "rimraf .nyc_output coverage dist docs tmp"
   },
   "repository": {
