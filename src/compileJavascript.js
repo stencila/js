@@ -2,9 +2,9 @@ import { parse } from 'acorn'
 import { generate as generateCode } from 'astring/src/astring'
 import findGlobals from './findGlobals'
 import packError from './packError'
-import JS_GLOBALS from './JS_GLOBALS'
+import JSGLOBALS from './JSGLOBALS'
 
-const GLOBALS = new Set(JS_GLOBALS)
+const GLOBALS = new Set(JSGLOBALS)
 
 export default function compileJavascript (code, options = {}) {
   const exprOnly = Boolean(options.expr)

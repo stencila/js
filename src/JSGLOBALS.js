@@ -4,7 +4,7 @@
  *
  * @type {Array}
  */
-const GLOBALS = [
+const JSGLOBALS = [
   // A list of ES6 globals obtained using: Object.keys(require('globals').es6)
   'Array', 'ArrayBuffer', 'Boolean', 'constructor', 'DataView', 'Date', 'decodeURI', 'decodeURIComponent',
   'encodeURI', 'encodeURIComponent', 'Error', 'escape', 'eval', 'EvalError', 'Float32Array', 'Float64Array',
@@ -18,4 +18,4 @@ const GLOBALS = [
   'exports', 'GLOBAL', 'global', 'Intl', 'module', 'process', 'require', 'root', 'setImmediate', 'setInterval', 'setTimeout'
 ]
 
-export default GLOBALS
+export default JSGLOBALS

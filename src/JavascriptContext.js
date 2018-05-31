@@ -1,6 +1,7 @@
 import compileJavascript from './compileJavascript'
 import packError from './packError'
 import collectArgs from './collectArgs'
+import { pack, unpack } from './types'
 
 /**
  * An execution context for Javascript.
@@ -26,45 +27,17 @@ export default class JavascriptContext {
     return this._id
   }
 
+  // NOTE: not clear yet if this will stay
   importLibrary (lib) {
     this._libraries.set(lib.name, lib)
   }
 
-  pack (value, cell) {
-    if (value === null) {
-      return { type: 'null', data: null }
-    }
-    if (typeof value === 'function') {
-      return {
-        type: 'function',
-        data: {
-          // a function is registered via this id
-          // so it is possible to have a function with the same name in
-          // different documents
-          id: `${cell.id}@${value.name}`,
-          // TODO: how
-          name: value.name,
-          // so that the host knows to call this context
-          context: this._id,
-          // full specification created by compileFunction()
-          spec: value._spec
-        }
-      }
-    }
-    if (value.type === 'image') {
-      return { type: 'image', src: value.src }
-    } else {
-      let type = value.type || typeof value
-      return { type, data: value }
-    }
+  pack (value) {
+    return pack(value, { contextId: this.id })
   }
 
-  // NOTE: this is async because we envisage to support pointer types
-  async unpack (value) {
-    const type = value.type
-    switch (type) {
-      default: return value.data
-    }
+  unpack (pkg) {
+    return unpack(pkg)
   }
 
   async compile (cell) {
@@ -101,7 +74,7 @@ export default class JavascriptContext {
       for (let idx = 0; idx < cell.outputs.length; idx++) {
         let output = cell.outputs[idx]
         let outputValue = result[idx]
-        let packedValue = await this.pack(outputValue, cell)
+        let packedValue = await this.pack(outputValue)
         output.value = packedValue
         // TODO: rethink. Polluting the global scope without any awareness
         // of scopes is not sufficient.
@@ -126,7 +99,6 @@ export default class JavascriptContext {
     } else {
       value = func.body(...args)
     }
-    // Execute the actual function call
     if (value !== undefined) {
       call.value = await this.pack(value)
     }
