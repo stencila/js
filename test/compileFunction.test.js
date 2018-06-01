@@ -1,5 +1,5 @@
 import { testAsync } from 'substance-test'
-import compileJavascript from '../src/compileJavascript'
+import { compileJavascript } from '../index'
 
 function _getFunc (cell) {
   // HACK: assuming that there is only one
@@ -18,70 +18,143 @@ function _getParams (cell) {
   }
 }
 
-testAsync('compileFunction(): without docs', async t => {
-  let code, expected, actual
+function _getReturn (cell) {
+  let func = _getFunc(cell)
+  if (func) {
+    let methods = Object.values(func.methods)
+    if (methods.length > 0) {
+      return methods[0].return
+    }
+  }
+}
 
-  code = 'function func (){}'
-  actual = _getParams(compileJavascript(code))
-  expected = undefined
-  t.deepEqual(actual, expected)
-
-  code = 'function func (a){}'
-  actual = _getParams(compileJavascript(code))
-  expected = [{name: 'a'}]
-  t.deepEqual(actual, expected)
-
-  t.end()
-})
-
-// await checkParams('function func (a, b, c){}', [{name: 'a'}, {name: 'b'}, {name: 'c'}], 'three parameters')
-
-// await checkParams('function func (...a){}', [{name: 'a', repeats: true}], 'one repeatable parameters')
-
-// await checkParams('function func (___a){}', [{name: 'a', extends: true}], 'one extensible parameters')
-
-// // Currently, do not attempt to parse parameter defaults into values
-// await checkParams('function func (a=1){}', [{name: 'a', default: '1'}], 'a parameter with a number default')
-// await checkParams('function func (a="foo"){}', [{name: 'a', default: '"foo"'}], 'a parameter with a number default')
-// await checkParams('function func (a=[1, 2, 3]){}', [{name: 'a', default: '[1, 2, 3]'}], 'a parameter with an array default')
-// await checkParams('function func (a={b:1, c:2}){}', [{name: 'a', default: '{b:1, c:2}'}], 'a parameter with an array default')
-
-// await checkParams(`
-//   /**
-//    * @param a Description of parameter a
-//    * @param {typeB} b Description of parameter b
-//    */
-//   function func (a, b){}
-// `, [
-//   {name: 'a', description: 'Description of parameter a'},
-//   {name: 'b', type: 'typeB', description: 'Description of parameter b'}
-// ], 'parameter descriptions and types from docs')
-
-// await checkParams(`
-//   /**
-//    * @param {...number} pars Description of parameters
-//    */
-//   function func (...pars){}
-// `, [
-//   {name: 'pars', type: 'number', repeats: true, description: 'Description of parameters'}
-// ], 'repeatable parameter with type specified and elipses')
-
-// await checkParams(`
-//   /**
-//    * @param {___number} pars Description of parameters
-//    */
-//   function func (___pars){}
-// `, [
-//   {name: 'pars', type: 'number', extends: true, description: 'Description of parameters'}
-// ], 'extensible parameter with type specified')
-
-// // Check return parsed from doc comment
 // async function checkReturn (source, expect, message) {
 //   let cell = await context.compile(source)
 //   let func = cell.outputs[0].value.data
 //   let return_ = Object.values(func.methods)[0]['return']
 //   assert.deepEqual(return_, expect, message)
 // }
+
+testAsync('compileFunction(): without docs', async t => {
+  let code, expected, actual
+
+  code = 'function func (){}'
+  actual = _getParams(compileJavascript(code))
+  expected = []
+  t.deepEqual(actual, expected, 'no params')
+
+  code = 'function func (a){}'
+  actual = _getParams(compileJavascript(code))
+  expected = [{name: 'a'}]
+  t.deepEqual(actual, expected, 'one param')
+
+  code = 'function func (a, b, c){}'
+  actual = _getParams(compileJavascript(code))
+  expected = [{name: 'a'}, {name: 'b'}, {name: 'c'}]
+  t.deepEqual(actual, expected, 'three params')
+
+  code = 'function func (...a){}'
+  actual = _getParams(compileJavascript(code))
+  expected = [{name: 'a', repeats: true}]
+  t.deepEqual(actual, expected, 'one repeatable parameter')
+
+  code = 'function func (___a){}'
+  actual = _getParams(compileJavascript(code))
+  expected = [{name: 'a', extends: true}]
+  t.deepEqual(actual, expected, 'one extensible parameter')
+
+  code = 'function func (a=1){}'
+  actual = _getParams(compileJavascript(code))
+  expected = [{name: 'a', default: 1}]
+  t.deepEqual(actual, expected, 'a parameter with a number default')
+
+  code = 'function func (a="foo"){}'
+  actual = _getParams(compileJavascript(code))
+  expected = [{name: 'a', default: 'foo'}]
+  t.deepEqual(actual, expected, 'a parameter with a string default')
+
+  code = 'function func (a=[1, 2, 3]){}'
+  actual = _getParams(compileJavascript(code))
+  expected = [{name: 'a', default: [1, 2, 3]}]
+  t.deepEqual(actual, expected, 'a parameter with an array default')
+
+  // ATTENTION: for now only JSON notation is supported for complex default values
+  code = 'function func (a={"b":1, "c":2}){}'
+  actual = _getParams(compileJavascript(code))
+  expected = [{name: 'a', default: {b: 1, c: 2}}]
+  t.deepEqual(actual, expected, 'a parameter with an object default')
+
+  t.end()
+})
+
+testAsync('compileFunction(): with docs', async t => {
+  let code, expected, actual
+
+  code = `
+  /**
+   * @param a Description of parameter a
+   * @param b Description of parameter b
+   */
+  function func (a, b){}`
+
+  actual = _getParams(compileJavascript(code))
+  expected = [
+    {name: 'a', description: 'Description of parameter a'},
+    {name: 'b', description: 'Description of parameter b'}
+  ]
+  t.deepEqual(actual, expected, 'parameter with descriptions')
+
+  code = `
+  /**
+   * @param {typeA} a Description of parameter a
+   * @param {typeB} b Description of parameter b
+   */
+  function func (a, b){}`
+  actual = _getParams(compileJavascript(code))
+  expected = [
+    {name: 'a', type: 'typeA', description: 'Description of parameter a'},
+    {name: 'b', type: 'typeB', description: 'Description of parameter b'}
+  ]
+  t.deepEqual(actual, expected, 'parameter with descriptions and types')
+
+  code = `
+  /**
+   * @param {...number} pars Description of parameters
+   */
+  function func (...pars){}
+  `
+  actual = _getParams(compileJavascript(code))
+  expected = [
+    {name: 'pars', type: 'number', repeats: true, description: 'Description of parameters'}
+  ]
+  t.deepEqual(actual, expected, 'repeatable parameter')
+
+  code = `
+  /**
+   * @param {___number} pars Description of parameters
+   */
+  function func (___pars){}
+  `
+  actual = _getParams(compileJavascript(code))
+  expected = [
+    {name: 'pars', type: 'number', extends: true, description: 'Description of parameters'}
+  ]
+  t.deepEqual(actual, expected, 'extensible parameter')
+
+  code = `function func (){}`
+  actual = _getReturn(compileJavascript(code))
+  expected = undefined
+  t.deepEqual(actual, expected, 'method.return comes only with doc')
+
+  // code = `
+  // `
+  // actual = _getReturn(compileJavascript(code))
+  // expected = [
+  // ]
+  // t.deepEqual(actual, expected, '')
+
+  t.end()
+})
 
 // await checkReturn(
 //   `function func (){}`,

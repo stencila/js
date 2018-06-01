@@ -20,8 +20,10 @@ export default function compileJavascript (code, options = {}) {
   let docs = []
   try {
     ast = _parse(code, {
-      onComment: (block, text) => {
-        if (block) docs.push(text)
+      onComment: (block, text, start, end) => {
+        if (block) {
+          docs.push({ start, end, text })
+        }
       }
     })
   } catch (error) {

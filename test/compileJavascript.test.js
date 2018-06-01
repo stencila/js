@@ -1,6 +1,6 @@
 import test from 'tape'
-import compileJavascript from '../src/compileJavascript'
 import { map } from 'lodash-es'
+import { compileJavascript } from '../index'
 
 test('compileJavascript: empty string', t => {
   let code = ''
@@ -359,13 +359,14 @@ test('compileJavascript: function', t => {
         code: code,
         name: 'afunc',
         methods: {
-          'afunc()': {
-            signature: 'afunc()'
+          'afunc(x, y)': {
+            signature: 'afunc(x, y)',
+            params: [
+              { name: 'x' },
+              { name: 'y' }
+            ]
           }
-        },
-        description: undefined,
-        summary: undefined,
-        title: undefined
+        }
       }
     }],
     messages: []
