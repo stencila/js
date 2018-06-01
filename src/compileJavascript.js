@@ -1,5 +1,6 @@
 import { parse } from 'acorn'
 import { generate as generateCode } from 'astring/src/astring'
+import compileFunction from './compileFunction'
 import findGlobals from './findGlobals'
 import packError from './packError'
 import JSGLOBALS from './JSGLOBALS'
@@ -12,12 +13,17 @@ export default function compileJavascript (code, options = {}) {
   let inputs = []
   let output = null
   let messages = []
-  let valueExpr
+  let valueExpr, spec
 
   // Parse the code
   let ast
+  let docs = []
   try {
-    ast = _parse(code)
+    ast = _parse(code, {
+      onComment: (block, text) => {
+        if (block) docs.push(text)
+      }
+    })
   } catch (error) {
     messages.push(packError(error))
   }
@@ -37,10 +43,14 @@ export default function compileJavascript (code, options = {}) {
   }
   // output value extraction
   if (messages.length === 0) {
-    ([output, valueExpr] = _extractOutput(ast, inputs))
+    ([output, valueExpr, spec] = _extractOutput(ast, inputs, code, docs))
   }
   let outputs = []
-  if (output) outputs.push({ name: output })
+  if (output) {
+    let _output = { name: output }
+    if (spec) _output.spec = spec
+    outputs.push(_output)
+  }
 
   if (valueExpr) code = code + `;\nreturn ${valueExpr}`
 
@@ -84,8 +94,8 @@ function _isSimpleExpression (ast) {
   return false
 }
 
-function _extractOutput (ast, inputs) {
-  let name, valueExpr
+function _extractOutput (ast, inputs, code, docs) {
+  let name, valueExpr, spec
   // If the last top level node in the AST is a FunctionDeclaration,
   // VariableDeclaration or Identifier then use it's name as the name name
   let last = ast.body.pop()
@@ -93,7 +103,7 @@ function _extractOutput (ast, inputs) {
     switch (last.type) {
       case 'FunctionDeclaration':
         name = last.id.name
-        // value = this._compileFunction(name, last, source, docs)
+        spec = compileFunction(name, last, code, docs)
         valueExpr = name
         break
       case 'ExportDefaultDeclaration':
@@ -101,7 +111,7 @@ function _extractOutput (ast, inputs) {
         const decl = last.declaration
         if (decl.type === 'FunctionDeclaration') {
           name = decl.id.name
-          // value = this._compileFunction(name, decl, source, docs)
+          spec = compileFunction(name, decl, code, docs)
           valueExpr = name
         }
         break
@@ -127,5 +137,5 @@ function _extractOutput (ast, inputs) {
         throw new Error('Unhandled AST node type: ' + last.type)
     }
   }
-  return [name, valueExpr]
+  return [name, valueExpr, spec]
 }

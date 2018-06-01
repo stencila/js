@@ -2,3 +2,4 @@
 // reporting when using `esm` with `nyc`
 
 import './compileJavascript.test.js'
+import './compileFunction.test.js'

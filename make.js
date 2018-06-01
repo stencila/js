@@ -62,20 +62,19 @@ b.task('build:lib:node', () => {
 // bundling tests for use in the browser
 b.task('build:test:browser', ['bundle:doctrine'], () => {
   b.js('test/index.js', {
-    output: [
-      {
-        file: 'tmp/tests.js',
-        format: 'umd',
-        name: 'StencilaJsTests',
-        globals: {
-          'tape': 'substanceTest.test'
-        }
+    output: [{
+      file: 'tmp/tests.js',
+      format: 'umd',
+      name: 'StencilaJsTests',
+      globals: {
+        'tape': 'substanceTest.test',
+        'substance-test': 'substanceTest'
       }
-    ],
+    }],
     alias: {
       'doctrine': path.join(__dirname, 'tmp', 'doctrine.browser.js')
     },
-    external: [ 'tape' ],
+    external: [ 'tape', 'substance-test' ],
     commonjs: COMMONJS_OPTS
   })
 })

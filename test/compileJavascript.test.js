@@ -114,7 +114,7 @@ test('compileJavascript: last statement is a declaration', t => {
   t.end()
 })
 
-test('compileJavascript: last is not locally declared', t => {
+test('compileJavascript: last statement is not locally declared', t => {
   let code = 'foo'
   let actual = compileJavascript(code)
   let expected = {
@@ -126,7 +126,7 @@ test('compileJavascript: last is not locally declared', t => {
   t.end()
 })
 
-test('compileJavascript: last is locally declared variable', t => {
+test('compileJavascript: last statement is a locally declared variable', t => {
   let code = 'var foo\nfoo'
   let actual = compileJavascript(code)
   let expected = {
@@ -151,7 +151,7 @@ test('compileJavascript: last is locally declared variable', t => {
   t.end()
 })
 
-test('compileJavascript: last is not a declaration', t => {
+test('compileJavascript: last statement is not a declaration', t => {
   let code, actual, expected
 
   code = 'let foo\nfoo * 3'
@@ -175,7 +175,7 @@ test('compileJavascript: last is not a declaration', t => {
 })
 
 // Last statement is a declaration with multiple declarations (first identifier used)
-test('compileJavascript: last has multiple declarations', t => {
+test('compileJavascript: last statement has multiple declarations', t => {
   let code = 'foo\nbar\nlet baz, urg\n\n'
   let actual = compileJavascript(code)
   let expected = {
@@ -209,7 +209,7 @@ test('compileJavascript: complex example with nested and shadowed variables', t 
 })
 
 // Last statement is not a declaration or identifier
-test('compileJavascript: last is not a declaration or identifier', t => {
+test('compileJavascript: last statement is not a declaration or identifier', t => {
   let code = 'let foo\nbar\nlet baz\ntrue'
   let actual = compileJavascript(code)
   let expected = {
@@ -294,6 +294,82 @@ test('compileJavascript: not a simple expressions', t => {
 
   code = 'y--'
   actual = compileJavascript(code, {expr: true})
+  _isFulfilled(t, actual, expected)
+
+  code = 'function foo(){}'
+  actual = compileJavascript(code, {expr: true})
+  _isFulfilled(t, actual, expected)
+
+  t.end()
+})
+
+test('compileJavascript: last statement is an expression', t => {
+  let code, actual, expected
+
+  code = 'true'
+  actual = compileJavascript(code)
+  expected = {
+    inputs: [],
+    outputs: [],
+    messages: []
+  }
+  _isFulfilled(t, actual, expected)
+
+  code = 'foo * 3'
+  actual = compileJavascript(code)
+  expected = {
+    inputs: [{name: 'foo'}],
+    outputs: [],
+    messages: []
+  }
+  _isFulfilled(t, actual, expected)
+
+  code = 'var foo = 1\nfoo * 3'
+  actual = compileJavascript(code)
+  expected = {
+    inputs: [],
+    outputs: [],
+    messages: []
+  }
+  _isFulfilled(t, actual, expected)
+
+  code = 'let z = x * y;\n(z * 2)'
+  actual = compileJavascript(code)
+  expected = {
+    inputs: [{name: 'x'}, {name: 'y'}],
+    outputs: [],
+    messages: []
+  }
+  _isFulfilled(t, actual, expected)
+
+  t.end()
+})
+
+test('compileJavascript: function', t => {
+  let code, actual, expected
+
+  code = 'function afunc (x, y) { return x * y }'
+  actual = compileJavascript(code)
+  expected = {
+    inputs: [],
+    outputs: [{
+      name: 'afunc',
+      spec: {
+        type: 'function',
+        code: code,
+        name: 'afunc',
+        methods: {
+          'afunc()': {
+            signature: 'afunc()'
+          }
+        },
+        description: undefined,
+        summary: undefined,
+        title: undefined
+      }
+    }],
+    messages: []
+  }
   _isFulfilled(t, actual, expected)
 
   t.end()
