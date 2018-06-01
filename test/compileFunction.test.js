@@ -8,32 +8,36 @@ function _getFunc (cell) {
   }
 }
 
-function _getParams (cell) {
+function _getMethod (cell) {
   let func = _getFunc(cell)
   if (func) {
     let methods = Object.values(func.methods)
     if (methods.length > 0) {
-      return methods[0].params
+      return methods[0]
     }
+  }
+}
+
+function _getParams (cell) {
+  let method = _getMethod(cell)
+  if (method) {
+    return method.params
   }
 }
 
 function _getReturn (cell) {
-  let func = _getFunc(cell)
-  if (func) {
-    let methods = Object.values(func.methods)
-    if (methods.length > 0) {
-      return methods[0].return
-    }
+  let method = _getMethod(cell)
+  if (method) {
+    return method.return
   }
 }
 
-// async function checkReturn (source, expect, message) {
-//   let cell = await context.compile(source)
-//   let func = cell.outputs[0].value.data
-//   let return_ = Object.values(func.methods)[0]['return']
-//   assert.deepEqual(return_, expect, message)
-// }
+function _getExamples (cell) {
+  let method = _getMethod(cell)
+  if (method) {
+    return method.examples
+  }
+}
 
 testAsync('compileFunction(): without docs', async t => {
   let code, expected, actual
@@ -141,37 +145,53 @@ testAsync('compileFunction(): with docs', async t => {
   ]
   t.deepEqual(actual, expected, 'extensible parameter')
 
+  t.end()
+})
+
+testAsync('compileFunction(): @return', async t => {
+  let code, expected, actual
+
   code = `function func (){}`
   actual = _getReturn(compileJavascript(code))
   expected = undefined
   t.deepEqual(actual, expected, 'method.return comes only with doc')
 
-  // code = `
-  // `
-  // actual = _getReturn(compileJavascript(code))
-  // expected = [
-  // ]
-  // t.deepEqual(actual, expected, '')
+  code = `
+  /**
+   * @return {typeReturn} Description of return
+   */
+  function func (a, b){}
+  `
+  actual = _getReturn(compileJavascript(code))
+  expected = {type: 'typeReturn', description: 'Description of return'}
+  t.deepEqual(actual, expected, '@return with type')
 
   t.end()
 })
 
-// await checkReturn(
-//   `function func (){}`,
-//   undefined,
-//   'return can only come from doc comment'
-// )
+testAsync('compileFunction(): @example', async t => {
+  let code, expected, actual
 
-// await checkReturn(
-//   `
-//   /**
-//    * @return {typeReturn} Description of return
-//    */
-//   function func (a, b){}
-//   `,
-//   {type: 'typeReturn', description: 'Description of return'},
-//   'return description and type from docs'
-// )
+  code = `
+  /**
+   * @example func(ex1)
+   * @example <caption>Example 2 function</caption> func(ex2)
+   */
+  function func (a, b){}
+  `
+  actual = _getExamples(compileJavascript(code))
+  expected = [
+    {
+      usage: 'func(ex1)'
+    }, {
+      usage: 'func(ex2)',
+      caption: 'Example 2 function'
+    }
+  ]
+  t.deepEqual(actual, expected, 'method.return comes only with doc')
+
+  t.end()
+})
 
 // // Check example parsed from doc comment
 // assert.deepEqual(

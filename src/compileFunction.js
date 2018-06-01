@@ -80,6 +80,12 @@ export default function compileFunction (name, decl, code, commentBlocks) {
         }
       }
     }
+    if (details._return) {
+      method['return'] = details._return
+    }
+    if (details.examples) {
+      method.examples = details.examples
+    }
   }
 
   spec.methods = methods
