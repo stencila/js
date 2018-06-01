@@ -9,8 +9,11 @@ import { pack, unpack } from './types'
 export default class JavascriptContext {
   constructor (host, id) {
     this._host = host
+
+    // every context needs to have a unique id
     if (!id) throw new Error('id is required')
     this._id = id
+
     /**
      * Values residing in this context
      *
@@ -130,19 +133,28 @@ export default class JavascriptContext {
     return { inputNames, inputValues }
   }
 
+  // Note: ATM this is only called to lookup functions
   resolve (node) {
+    // TODO: this approach is questionable.
+    // While it seems convenient to provide some magical lookup
+    // we should come up with an explicit and strict solution first
+
     let value
-    // allow for values that are stored by id
+    // first try to look up via id
     if (node.id) {
       value = this._values[node.id]
-    } else if (node.library) {
+    }
+    // then try to find the value in a specific library
+    if (!value && node.library && node.name) {
       // allow for lookup for a specific library value
       let library = this._libraries.get(node.library)
       // TODO: library should just have values
       // for sake of consistency, we should think about a similar
       // layout as other value types
       value = library.funcs[node.name]
-    } else {
+    }
+    // finally look for the value in all registered libraries
+    if (!value && node.name) {
       // look in all libraries
       console.error('TODO: would prefer to reference a specific library')
       const name = node.name
