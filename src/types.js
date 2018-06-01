@@ -62,7 +62,7 @@ export function coercedArrayType (arr) {
 export function type (value) {
   let type = typeof value
 
-  if (value === null) {
+  if (isNil(value) === null) {
     return 'null'
   } else if (type === 'boolean') {
     return 'boolean'
@@ -127,7 +127,7 @@ function _mostSpecificType (type, next) {
 }
 
 export function pack (value, opts = {}) {
-  if (value === null) {
+  if (isNil(value)) {
     return { type: 'null', data: null }
   }
   if (typeof value === 'function') {

@@ -1,3 +1,4 @@
+import { isNil } from 'substance'
 import compileJavascript from './compileJavascript'
 import packError from './packError'
 import collectArgs from './collectArgs'
@@ -54,7 +55,7 @@ export default class JavascriptContext {
       code += `;\nreturn [${cell.outputs.map(o => o.name).join(', ')}]`
     }
     // Get the names and values of cell inputs
-    let {inputNames, inputValues} = this._collectInputs(cell.inputs)
+    let {inputNames, inputValues} = await this._collectInputs(cell.inputs)
 
     // Construct a function from them
     const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor
@@ -111,22 +112,27 @@ export default class JavascriptContext {
   async _collectInputs (inputs) {
     let inputNames = []
     let inputValues = []
-    for (let { name, value } of inputs) {
-      let type = value.type
-      let data = value.data
+    for (let [name, value] of inputs) {
       let inputValue
-      // TODO: if it is a local function, then take it from
-      // otherwise create a call proxy
-      if (type === 'function') {
-        if (data.context === this._id) {
-          inputValue = this.resolve(value)
-        } else {
-          console.error('SUPPORT CALLING ACROSS CONTEXTS VIA HOST AND FUNCTION VALUES')
-          inputValue = function () {}
-        }
+      if (isNil(value)) {
+        inputValue = null
       } else {
-        inputValue = await this.unpack(value)
+        let type = value.type
+        let data = value.data
+        // TODO: if it is a local function, then take it from
+        // otherwise create a call proxy
+        if (type === 'function') {
+          if (data.context === this._id) {
+            inputValue = this.resolve(value)
+          } else {
+            console.error('SUPPORT CALLING ACROSS CONTEXTS VIA HOST AND FUNCTION VALUES')
+            inputValue = function () {}
+          }
+        } else {
+          inputValue = await this.unpack(value)
+        }
       }
+
       inputNames.push(name)
       inputValues.push(inputValue)
     }
