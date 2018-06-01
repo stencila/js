@@ -48,33 +48,35 @@ b.task('build:lib:browser', ['bundle:doctrine'], () => {
 // bundling the lib with rollup for node
 b.task('build:lib:node', () => {
   b.js('src/index.js', {
-    output: [
-      {
-        file: 'dist/stencila-js.cjs.js',
-        format: 'cjs'
-      }
-    ],
+    output: [{
+      file: 'dist/stencila-js.cjs.js',
+      format: 'cjs'
+    }],
     external: ['doctrine'],
     commonjs: COMMONJS_OPTS
   })
 })
 
 // bundling tests for use in the browser
-b.task('build:test:browser', ['bundle:doctrine'], () => {
+b.task('build:test:browser', ['bundle:doctrine', 'build:lib:browser'], () => {
+  const INDEX_JS = path.join(__dirname, 'index.js')
+  let globals = {
+    'tape': 'substanceTest.test',
+    'substance-test': 'substanceTest',
+    'lodash-es': 'substance'
+  }
+  globals[INDEX_JS] = 'stencilaJs'
   b.js('test/index.js', {
     output: [{
       file: 'tmp/tests.js',
       format: 'umd',
       name: 'StencilaJsTests',
-      globals: {
-        'tape': 'substanceTest.test',
-        'substance-test': 'substanceTest'
-      }
+      globals
     }],
     alias: {
       'doctrine': path.join(__dirname, 'tmp', 'doctrine.browser.js')
     },
-    external: [ 'tape', 'substance-test' ],
+    external: [ 'tape', 'substance-test', 'lodash-es', INDEX_JS ],
     commonjs: COMMONJS_OPTS
   })
 })
