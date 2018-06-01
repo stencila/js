@@ -1,4 +1,3 @@
-import test from 'tape'
 import { testAsync } from './helpers'
 import JavascriptContext from '../src/JavascriptContext'
 

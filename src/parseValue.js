@@ -43,7 +43,7 @@ export default function parseValue (text) {
     }
   }
   // ATTENTION: for arrays and object we support only JSON notation for now
-  if (text.charCodeAt(0) === BRACKET || text.charCodeAt(0)) {
+  if (text.charCodeAt(0) === BRACKET || text.charCodeAt(0) === BRACE) {
     return JSON.parse(text)
   }
 
