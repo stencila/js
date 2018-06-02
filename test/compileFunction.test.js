@@ -262,68 +262,10 @@ testAsync('compileFunction(): kitchensink', async t => {
   t.end()
 })
 
-// // Kitchen sink test
-// const src1 = `
-//   /**
-//    * Function description
-//    *
-//    * @title Function title
-//    * @summary Function summary
-//    *
-//    * @example <caption>Example caption</caption>
-//    *
-//    * funcname(1, 2, 3, 4)
-//    *
-//    * @example
-//    *
-//    * funcname(x, y, z)
-//    *
-//    * @param  {par1Type} par1 Parameter one description
-//    * @param  {...any} par2 Parameter two description
-//    * @return {returnType} Return description
-//    */
-//   function funcname(par1, ...par2){
-//     return par1 + sum(par2)
-//   }
-// `
-// let func1 = (await context.compile(src1, false)).outputs[0].value.data
-// assert.deepEqual(func1, {
-//   type: 'function',
-//   name: 'funcname',
-//   title: 'Function title',
-//   summary: 'Function summary',
-//   description: 'Function description',
-//   methods: {
-//     'funcname(par1: par1Type, par2: any): returnType': {
-//       signature: 'funcname(par1: par1Type, par2: any): returnType',
-//       params: [
-//         {
-//           name: 'par1',
-//           type: 'par1Type',
-//           description: 'Parameter one description'
-//         }, {
-//           name: 'par2',
-//           repeats: true,
-//           type: 'any',
-//           description: 'Parameter two description'
-//         }
-//       ],
-//       return: {
-//         type: 'returnType',
-//         description: 'Return description'
-//       },
-//       examples: [
-//         {
-//           usage: 'funcname(1, 2, 3, 4)',
-//           caption: 'Example caption'
-//         }, {
-//           usage: 'funcname(x, y, z)'
-//         }
-//       ]
-//     }
-//   }
-// }, 'kitchensink example')
-
+// TODO: While we want this feature on the long term it seems that
+// overloaded functions are not supported yet by 'esdoc'
+// I suggest to wait for this to be supported by esdoc so that we can rely on
+// a standard syntax. Until then I would rather leave this feature.
 // // Overloading
 // const src2 = `
 //   /**
