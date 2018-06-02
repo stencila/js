@@ -2,7 +2,7 @@ import test from 'tape'
 import { map } from 'lodash-es'
 import { compileJavascript } from '../index'
 
-test('compileJavascript: empty string', t => {
+test('compile: empty string', t => {
   let code = ''
   let actual = compileJavascript(code)
   let expected = {
@@ -14,7 +14,7 @@ test('compileJavascript: empty string', t => {
   t.end()
 })
 
-test('compileJavascript: syntax error', t => {
+test('compile: syntax error', t => {
   let code, actual, expected
 
   code = 'foo bar()'
@@ -44,7 +44,7 @@ test('compileJavascript: syntax error', t => {
   t.end()
 })
 
-test('compileJavascript: Math.pi', t => {
+test('compile: Math.pi', t => {
   let code = 'Math.pi'
   let actual = compileJavascript(code)
   let expected = {
@@ -56,7 +56,7 @@ test('compileJavascript: Math.pi', t => {
   t.end()
 })
 
-test('compileJavascript: require()', t => {
+test('compile: require()', t => {
   let code = 'const foo = require("foo")\nfoo.bar'
   let actual = compileJavascript(code)
   let expected = {
@@ -68,7 +68,7 @@ test('compileJavascript: require()', t => {
   t.end()
 })
 
-test('compileJavascript: specialFunc()', t => {
+test('compile: specialFunc()', t => {
   let code = 'const result = specialFunc()'
   let actual = compileJavascript(code)
   let expected = {
@@ -80,7 +80,7 @@ test('compileJavascript: specialFunc()', t => {
   t.end()
 })
 
-test('compileJavascript: specialMath.pi', t => {
+test('compile: specialMath.pi', t => {
   let code = 'specialMath.pi'
   let actual = compileJavascript(code)
   let expected = {
@@ -92,7 +92,7 @@ test('compileJavascript: specialMath.pi', t => {
   t.end()
 })
 
-test('compileJavascript: last statement is a declaration', t => {
+test('compile: last statement is a declaration', t => {
   let code = 'var foo'
   let actual = compileJavascript(code)
   let expected = {
@@ -114,7 +114,7 @@ test('compileJavascript: last statement is a declaration', t => {
   t.end()
 })
 
-test('compileJavascript: last statement is not locally declared', t => {
+test('compile: last statement is not locally declared', t => {
   let code = 'foo'
   let actual = compileJavascript(code)
   let expected = {
@@ -126,7 +126,7 @@ test('compileJavascript: last statement is not locally declared', t => {
   t.end()
 })
 
-test('compileJavascript: last statement is a locally declared variable', t => {
+test('compile: last statement is a locally declared variable', t => {
   let code = 'var foo\nfoo'
   let actual = compileJavascript(code)
   let expected = {
@@ -151,7 +151,7 @@ test('compileJavascript: last statement is a locally declared variable', t => {
   t.end()
 })
 
-test('compileJavascript: last statement is not a declaration', t => {
+test('compile: last statement is not a declaration', t => {
   let code, actual, expected
 
   code = 'let foo\nfoo * 3'
@@ -175,7 +175,7 @@ test('compileJavascript: last statement is not a declaration', t => {
 })
 
 // Last statement is a declaration with multiple declarations (first identifier used)
-test('compileJavascript: last statement has multiple declarations', t => {
+test('compile: last statement has multiple declarations', t => {
   let code = 'foo\nbar\nlet baz, urg\n\n'
   let actual = compileJavascript(code)
   let expected = {
@@ -189,7 +189,7 @@ test('compileJavascript: last statement has multiple declarations', t => {
 
 // Only top level variable declarations are considered when
 // determining cell inputs
-test('compileJavascript: complex example with nested and shadowed variables', t => {
+test('compile: complex example with nested and shadowed variables', t => {
   let code = `
     let a;
     { let c };
@@ -209,7 +209,7 @@ test('compileJavascript: complex example with nested and shadowed variables', t 
 })
 
 // Last statement is not a declaration or identifier
-test('compileJavascript: last statement is not a declaration or identifier', t => {
+test('compile: last statement is not a declaration or identifier', t => {
   let code = 'let foo\nbar\nlet baz\ntrue'
   let actual = compileJavascript(code)
   let expected = {
@@ -221,7 +221,7 @@ test('compileJavascript: last statement is not a declaration or identifier', t =
   t.end()
 })
 
-test('compileJavascript: anoymous arrow function', t => {
+test('compile: anoymous arrow function', t => {
   let code = '[1,2,3].map(n => n*2)'
   let actual = compileJavascript(code)
   let expected = {
@@ -233,7 +233,7 @@ test('compileJavascript: anoymous arrow function', t => {
   t.end()
 })
 
-test('compileJavascript: declaration after usage', t => {
+test('compile: declaration after usage', t => {
   // ATTENTION: the former implementation of this test was expecting an input detected here
   // however this was not correct. While in ES6 variables are only initialised
   // after being declared explicitly, they declaration is hoisted within this block
@@ -250,7 +250,7 @@ test('compileJavascript: declaration after usage', t => {
   t.end()
 })
 
-test('compileJavascript: simple expressions', t => {
+test('compile: simple expressions', t => {
   let code, actual, expected
 
   code = '42'
@@ -274,7 +274,7 @@ test('compileJavascript: simple expressions', t => {
   t.end()
 })
 
-test('compileJavascript: not a simple expressions', t => {
+test('compile: not a simple expressions', t => {
   let code, actual, expected
 
   code = 'let y = x * 3'
@@ -303,7 +303,7 @@ test('compileJavascript: not a simple expressions', t => {
   t.end()
 })
 
-test('compileJavascript: last statement is an expression', t => {
+test('compile: last statement is an expression', t => {
   let code, actual, expected
 
   code = 'true'
@@ -345,7 +345,7 @@ test('compileJavascript: last statement is an expression', t => {
   t.end()
 })
 
-test('compileJavascript: function', t => {
+test('compile: function', t => {
   let code, actual, expected
 
   code = 'function afunc (x, y) { return x * y }'

@@ -39,7 +39,7 @@ function _getExamples (cell) {
   }
 }
 
-testAsync('compileFunction(): without docs', async t => {
+testAsync('compile function: without docs', async t => {
   let code, expected, actual
 
   code = 'function func (){}'
@@ -91,7 +91,7 @@ testAsync('compileFunction(): without docs', async t => {
   t.end()
 })
 
-testAsync('compileFunction(): with docs', async t => {
+testAsync('compile function: with docs', async t => {
   let code, expected, actual
 
   code = `
@@ -148,7 +148,7 @@ testAsync('compileFunction(): with docs', async t => {
   t.end()
 })
 
-testAsync('compileFunction(): @return', async t => {
+testAsync('compile function: @return', async t => {
   let code, expected, actual
 
   code = `function func (){}`
@@ -169,7 +169,7 @@ testAsync('compileFunction(): @return', async t => {
   t.end()
 })
 
-testAsync('compileFunction(): @example', async t => {
+testAsync('compile function: @example', async t => {
   let code, expected, actual
 
   code = `
@@ -193,7 +193,7 @@ testAsync('compileFunction(): @example', async t => {
   t.end()
 })
 
-testAsync('compileFunction(): kitchensink', async t => {
+testAsync('compile function: kitchensink', async t => {
   let code, expected, actual
 
   code = `

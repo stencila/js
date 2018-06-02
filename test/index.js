@@ -1,2 +1,3 @@
-import './compileJavascript.test.js'
+import './compile.test.js'
 import './compileFunction.test.js'
+import './execute.test.js'

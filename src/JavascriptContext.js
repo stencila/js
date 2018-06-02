@@ -50,13 +50,27 @@ export default class JavascriptContext {
   }
 
   async execute (cell) {
-    let code = cell.code
-    if (cell.outputs) {
-      code += `;\nreturn [${cell.outputs.map(o => o.name).join(', ')}]`
+    // don't execute empty code
+    if (!cell.code) return cell
+
+    let outputs = cell.outputs
+    // TODO: we need some kind of sourcemap here, e.g. using magicstring
+    // TODO: support multi-outputs by returning an array of values
+    let code
+    // exporting a named expression
+    if (outputs.length > 0 && outputs[0].name) {
+      code = [cell.code, ';\nreturn ', outputs[0].name].join('')
+    // simple expression (unnamed)
+    } else if (cell.expr) {
+      code = ['return (', cell.code, ')'].join('')
+    // multi-line with implicit return
+    } else if (cell.implicitReturn) {
+      code = [cell.code, ';\nreturn ', cell.implicitReturn].join('')
+    } else {
+      code = cell.code
     }
     // Get the names and values of cell inputs
     let {inputNames, inputValues} = await this._collectInputs(cell.inputs)
-
     // Construct a function from them
     const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor
     const func = new AsyncFunction(...inputNames, code) // eslint-disable-line no-new-func
@@ -74,23 +88,28 @@ export default class JavascriptContext {
         message
       })
     }
-    if (cell.outputs) {
-      for (let idx = 0; idx < cell.outputs.length; idx++) {
-        let output = cell.outputs[idx]
-        let outputValue = result[idx]
-        let packedValue = await this.pack(outputValue)
-        output.value = packedValue
-        // TODO: rethink. Polluting the global scope without any awareness
-        // of scopes is not sufficient.
-        // For instance a  user could run two notebooks which
-        // happen to contain a local function with the same name
-        // Instead the function should be stored maybe with
-        // an id derived from cell and output name
-        if (outputValue && outputValue.type === 'function') {
-          this._values.set(packedValue.data.id, output.value)
-        }
+
+    const setValue = async (output, value) => {
+      let packedValue = await this.pack(value)
+      output.value = packedValue
+      // TODO: rethink. Polluting the global scope is not a good idea.
+      // For instance a  user could run two notebooks which
+      // happen to contain a local function with the same name
+      // Instead the function should be stored maybe with
+      // an id derived from cell and output name
+      if (value && value.type === 'function') {
+        this._values.set(packedValue.data.id, value)
       }
     }
+    // TODO: thing about multi-outputs. When the time has come.
+    // implicit returns: either if cells.expr or cells. there are two cases
+    if (cell.implicitReturn) {
+      outputs.push({})
+    }
+    if (outputs.length > 0) {
+      await setValue(outputs[0], result)
+    }
+
     return cell
   }
 
@@ -112,7 +131,7 @@ export default class JavascriptContext {
   async _collectInputs (inputs) {
     let inputNames = []
     let inputValues = []
-    for (let [name, value] of inputs) {
+    for (let {name, value} of inputs) {
       let inputValue
       if (isNil(value)) {
         inputValue = null

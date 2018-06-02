@@ -11,13 +11,12 @@ export default function compileJavascript (code, options = {}) {
   const exprOnly = Boolean(options.expr)
 
   let inputs = []
-  let output = null
   let messages = []
-  let valueExpr, spec
 
   // Parse the code
   let ast
   let docs = []
+  let isExpr
   try {
     ast = _parse(code, {
       onComment: (block, text, start, end) => {
@@ -26,12 +25,14 @@ export default function compileJavascript (code, options = {}) {
         }
       }
     })
+    isExpr = _isSimpleExpression(ast)
   } catch (error) {
     messages.push(packError(error))
   }
+
   // simple expressions (such as in Sheet cells)
   if (messages.length === 0 && exprOnly) {
-    if (!_isSimpleExpression(ast)) {
+    if (!isExpr) {
       messages.push(packError(new Error('Code is not a single, simple expression')))
     }
   }
@@ -44,25 +45,42 @@ export default function compileJavascript (code, options = {}) {
     }
   }
   // output value extraction
+  let outputName, outputExpr, spec
   if (messages.length === 0) {
-    ([output, valueExpr, spec] = _extractOutput(ast, inputs, code, docs))
+    ([outputName, outputExpr, spec] = _extractOutput(ast, inputs, code, docs))
   }
   let outputs = []
-  if (output) {
-    let _output = { name: output }
-    if (spec) _output.spec = spec
+  // named output, i.e. exporting the result by name
+  if (outputName) {
+    let _output = {}
+    // set name or expr (not both)
+    if (outputName) {
+      _output.name = outputName
+    }
+    if (spec) {
+      _output.spec = spec
+    }
     outputs.push(_output)
   }
 
-  if (valueExpr) code = code + `;\nreturn ${valueExpr}`
-
-  return {
+  let cell = {
     type: 'cell',
     code,
     inputs,
     outputs,
     messages
   }
+
+  if (isExpr) {
+    cell.expr = true
+  }
+  // for complex expressions store the outputExpr
+  // so that we can create a return statement
+  if (outputExpr) {
+    cell.implicitReturn = outputExpr
+  }
+
+  return cell
 }
 
 // helpers
