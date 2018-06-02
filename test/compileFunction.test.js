@@ -1,43 +1,6 @@
 import { testAsync } from 'substance-test'
 import { compileJavascript } from '../index'
-
-function _getFunc (cell) {
-  // HACK: assuming that there is only one
-  if (cell.outputs.length > 0) {
-    return cell.outputs[0].spec
-  }
-}
-
-function _getMethod (cell) {
-  let func = _getFunc(cell)
-  if (func) {
-    let methods = Object.values(func.methods)
-    if (methods.length > 0) {
-      return methods[0]
-    }
-  }
-}
-
-function _getParams (cell) {
-  let method = _getMethod(cell)
-  if (method) {
-    return method.params
-  }
-}
-
-function _getReturn (cell) {
-  let method = _getMethod(cell)
-  if (method) {
-    return method.return
-  }
-}
-
-function _getExamples (cell) {
-  let method = _getMethod(cell)
-  if (method) {
-    return method.examples
-  }
-}
+import { _getFunc, _getParams, _getReturn, _getExamples } from './helpers'
 
 testAsync('compile function: without docs', async t => {
   let code, expected, actual

@@ -1,29 +1,11 @@
 import { testAsync } from 'substance-test'
 import { JavascriptContext } from '../index'
+import { _execute, _getOutput, _getMessages } from './helpers'
 
 function _setup () {
   // TODO: we want a stub host so we can test host context interaction
   let jsContext = new JavascriptContext(null, 'test')
   return { jsContext }
-}
-
-function _getOutput (cell) {
-  let output = cell.outputs[0]
-  if (output) {
-    return output.value
-  }
-}
-
-async function _execute (jsContext, cell, inputs) {
-  let compiled = await jsContext.compile(cell)
-  if (inputs) {
-    Object.keys(inputs).forEach(name => {
-      let input = cell.inputs.find(i => i.name === name)
-      input.value = jsContext.pack(inputs[name])
-    })
-  }
-  let executed = await jsContext.execute(compiled)
-  return executed
 }
 
 testAsync('execute: no output', async t => {
@@ -110,16 +92,21 @@ testAsync('execute: unnamed output', async t => {
   t.end()
 })
 
-/*
-  // Undefined output values create an error message
-  const undefinedMessages = [ { type: 'error', message: 'Cell output value is undefined' } ]
-  assert.deepEqual(
-    (await context.execute('undefined')).messages,
-    undefinedMessages
-  )
-  assert.deepEqual(
-    (await context.execute('Math.non_existant')).messages,
-    undefinedMessages
-  )
+testAsync('execute: invalid input', async t => {
+  let { jsContext } = _setup()
+  let code, actual, expected
 
-*/
+  const outputIsUndefined = { type: 'error', message: 'Cell output value is undefined' }
+
+  code = 'undefined'
+  actual = _getMessages(await _execute(jsContext, { code }))
+  expected = [outputIsUndefined]
+  t.deepEqual(actual, expected, code)
+
+  code = 'Math.non_existant'
+  actual = _getMessages(await _execute(jsContext, { code }))
+  expected = [outputIsUndefined]
+  t.deepEqual(actual, expected, code)
+
+  t.end()
+})
