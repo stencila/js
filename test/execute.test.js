@@ -31,7 +31,7 @@ testAsync('execute: unnamed output', async t => {
 
   code = '42'
   actual = _getOutput(await _execute(jsContext, { code }))
-  expected = { type: 'number', data: 42 }
+  expected = { type: 'integer', data: 42 }
   t.deepEqual(actual, expected, code)
 
   code = '1.1 * 2'
@@ -41,7 +41,7 @@ testAsync('execute: unnamed output', async t => {
 
   code = 'let x = 3\nMath.sqrt(x*3)'
   actual = _getOutput(await _execute(jsContext, { code }))
-  expected = { type: 'number', data: 3 }
+  expected = { type: 'integer', data: 3 }
   t.deepEqual(actual, expected, code)
 
   code = '// Multiple lines and comments\nlet x = {}\nObject.assign(x, {\na:1\n})\n'
@@ -63,25 +63,25 @@ testAsync('execute: unnamed output', async t => {
 
   code = '0'
   actual = _getOutput(await _execute(jsContext, { code }))
-  expected = { type: 'number', data: 0 }
+  expected = { type: 'integer', data: 0 }
   t.deepEqual(actual, expected, code)
 
   // Output value and name
 
   code = 'let b = 1'
   actual = _getOutput(await _execute(jsContext, { code }))
-  expected = { type: 'number', data: 1 }
+  expected = { type: 'integer', data: 1 }
   t.deepEqual(actual, expected, code)
 
   code = 'let c = 1\nc'
   actual = _getOutput(await _execute(jsContext, { code }))
-  expected = { type: 'number', data: 1 }
+  expected = { type: 'integer', data: 1 }
   t.deepEqual(actual, expected, code)
 
   // Inputs value and name
   code = 'x * 3'
   actual = _getOutput(await _execute(jsContext, { code }, { x: 6 }))
-  expected = { type: 'number', data: 18 }
+  expected = { type: 'integer', data: 18 }
   t.deepEqual(actual, expected, code)
 
   code = 'let z = x * y;\n(z * 2).toString()'
