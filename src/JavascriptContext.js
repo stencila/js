@@ -16,9 +16,9 @@ export default class JavascriptContext {
     this._id = id
 
     /**
-     * Values residing in this context
+     * Values residing in this context.
      *
-     * @type {Object}
+     * @type {Map} a map of packed values
      */
     this._values = new Map()
 
@@ -36,8 +36,9 @@ export default class JavascriptContext {
     this._libraries.set(lib.name, lib)
   }
 
-  pack (value) {
-    return pack(value, { contextId: this.id })
+  pack (value, opts = {}) {
+    opts.context = this
+    return pack(value, opts)
   }
 
   unpack (pkg) {
@@ -90,32 +91,50 @@ export default class JavascriptContext {
     }
 
     const setValue = async (output, value) => {
-      let packedValue = await this.pack(value)
+      let packedValue = await this.pack(value, { cell })
       output.value = packedValue
       // TODO: rethink. Polluting the global scope is not a good idea.
       // For instance a  user could run two notebooks which
       // happen to contain a local function with the same name
       // Instead the function should be stored maybe with
       // an id derived from cell and output name
-      if (value && value.type === 'function') {
-        this._values.set(packedValue.data.id, value)
+      if (value && packedValue.type === 'function') {
+        const spec = output.spec
+        let funcEntry = {
+          id: packedValue.data.id,
+          type: 'function',
+          name: spec.name,
+          methods: spec.methods,
+          body: value
+        }
+        this._values.set(funcEntry.id, funcEntry)
       }
     }
-    // TODO: thing about multi-outputs. When the time has come.
-    // implicit returns: either if cells.expr or cells. there are two cases
-    if (cell.implicitReturn) {
-      outputs.push({})
-    }
-    if (outputs.length > 0) {
-      await setValue(outputs[0], result)
+
+    if (typeof result === 'undefined') {
+      // If the cell has an output but that output is undefined
+      // then treat it as an error
+      cell.messages.push({
+        type: 'error',
+        message: 'Cell output value is undefined'
+      })
+    } else {
+      // TODO: thing about multi-outputs. When the time has come.
+      // implicit returns: either if cells.expr or cells. there are two cases
+      if (cell.implicitReturn) {
+        outputs.push({})
+      }
+      if (outputs.length > 0) {
+        await setValue(outputs[0], result)
+      }
     }
 
     return cell
   }
 
   async evaluateCall (call) {
-    const func = this.resolve(call.func)
-    let { args, namedArgs } = await collectArgs(func, call, { unpack: (v) => this.unpack(v) })
+    const func = this.resolveFunction(call.func)
+    let { args, namedArgs } = await collectArgs(func, call, { unpack: v => this.unpack(v) })
     let value
     if (namedArgs) {
       value = func.body(...args, namedArgs)
@@ -142,7 +161,7 @@ export default class JavascriptContext {
         // otherwise create a call proxy
         if (type === 'function') {
           if (data.context === this._id) {
-            inputValue = this.resolve(value)
+            inputValue = this.resolveFunction(value)
           } else {
             console.error('SUPPORT CALLING ACROSS CONTEXTS VIA HOST AND FUNCTION VALUES')
             inputValue = function () {}
@@ -158,40 +177,45 @@ export default class JavascriptContext {
     return { inputNames, inputValues }
   }
 
-  // Note: ATM this is only called to lookup functions
   resolve (node) {
-    // TODO: this approach is questionable.
-    // While it seems convenient to provide some magical lookup
-    // we should come up with an explicit and strict solution first
+    // ATM we only support function types
+    if (node.type === 'function') {
+      return this.resolveFunction(node)
+    }
+  }
 
+  resolveFunction (node) {
+    // TODO: there is
+    const { id, name, library } = node.data
     let value
     // first try to look up via id
-    if (node.id) {
-      value = this._values[node.id]
+    if (id) {
+      let entry = this._values.get(id)
+      value = entry
     }
+    // TODO: if we want something like this
     // then try to find the value in a specific library
-    if (!value && node.library && node.name) {
+    if (!value && library && name) {
       // allow for lookup for a specific library value
-      let library = this._libraries.get(node.library)
+      let lib = this._libraries.get(library)
       // TODO: library should just have values
       // for sake of consistency, we should think about a similar
       // layout as other value types
-      value = library.funcs[node.name]
+      value = lib.funcs[name]
     }
     // finally look for the value in all registered libraries
-    if (!value && node.name) {
+    if (!value && name) {
       // look in all libraries
       console.error('TODO: would prefer to reference a specific library')
-      const name = node.name
       // TODO: rethink. This is a bit too implicit
       // IMO the engine should be aware when a library symbol
       // is used and add everything to resolve this explicitly
-      for (let library of this._libraries.values()) {
-        value = library.funcs[name]
+      for (let lib of this._libraries.values()) {
+        value = lib.funcs[name]
         if (value) break
       }
     }
-    if (!value) throw new Error(`Could not resolve value "${node.id || node.name}"`)
+    if (!value) throw new Error(`Could not resolve value "${id || name}"`)
     return value
   }
 }

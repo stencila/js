@@ -131,22 +131,19 @@ export function pack (value, opts = {}) {
     return { type: 'null', data: null }
   }
   if (typeof value === 'function') {
-    let contextId
-    if (opts.context) contextId = opts.context.id
+    let data = { name: value.name }
+    if (opts.context) data.context = opts.context.id
+    if (opts.cell) data.id = opts.cell.id
     return {
       type: 'function',
-      data: {
-        id: value.id,
-        name: value.name,
-        context: contextId
-      }
+      data
     }
   }
   if (value.type === 'image') {
     return { type: 'image', src: value.src }
   } else {
-    let type = value.type || typeof value
-    return { type, data: value }
+    let _type = value.type || type(value)
+    return { type: _type, data: value }
   }
 }
 
