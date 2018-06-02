@@ -193,25 +193,74 @@ testAsync('compileFunction(): @example', async t => {
   t.end()
 })
 
-// // Check example parsed from doc comment
-// assert.deepEqual(
-//   Object.values((await context.compile(`
-//   /**
-//    * @example func(ex1)
-//    * @example <caption>Example 2 function</caption> func(ex2)
-//    */
-//   function func (a, b){}
-//   `)).outputs[0].value.data.methods)[0].examples,
-//   [
-//     {
-//       usage: 'func(ex1)'
-//     }, {
-//       usage: 'func(ex2)',
-//       caption: 'Example 2 function'
-//     }
-//   ],
-//   'examples from docs'
-// )
+testAsync('compileFunction(): kitchensink', async t => {
+  let code, expected, actual
+
+  code = `
+  /**
+   * Function description
+   *
+   * @title Function title
+   * @summary Function summary
+   *
+   * @example <caption>Example caption</caption>
+   *
+   * funcname(1, 2, 3, 4)
+   *
+   * @example
+   *
+   * funcname(x, y, z)
+   *
+   * @param  {par1Type} par1 Parameter one description
+   * @param  {...any} par2 Parameter two description
+   * @return {returnType} Return description
+   */
+  function funcname(par1, ...par2){
+    return par1 + sum(par2)
+  }
+  `
+  actual = _getFunc(compileJavascript(code))
+  expected = {
+    type: 'function',
+    code,
+    name: 'funcname',
+    title: 'Function title',
+    summary: 'Function summary',
+    description: 'Function description',
+    methods: {
+      'funcname(par1: par1Type, par2: any): returnType': {
+        signature: 'funcname(par1: par1Type, par2: any): returnType',
+        params: [
+          {
+            name: 'par1',
+            type: 'par1Type',
+            description: 'Parameter one description'
+          }, {
+            name: 'par2',
+            repeats: true,
+            type: 'any',
+            description: 'Parameter two description'
+          }
+        ],
+        return: {
+          type: 'returnType',
+          description: 'Return description'
+        },
+        examples: [
+          {
+            usage: 'funcname(1, 2, 3, 4)',
+            caption: 'Example caption'
+          }, {
+            usage: 'funcname(x, y, z)'
+          }
+        ]
+      }
+    }
+  }
+  t.deepEqual(actual, expected, 'method.return comes only with doc')
+
+  t.end()
+})
 
 // // Kitchen sink test
 // const src1 = `

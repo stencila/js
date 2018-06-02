@@ -3,12 +3,6 @@ import extractFunctionSpecFromDoc from './extractFunctionSpecFromDoc'
 
 // TODO: bring back features from the original implementation.
 export default function compileFunction (name, decl, code, commentBlocks) {
-  let spec = {
-    type: 'function',
-    code,
-    name
-  }
-
   let params = []
   for (let node of decl.params) {
     let param = {}
@@ -39,20 +33,6 @@ export default function compileFunction (name, decl, code, commentBlocks) {
   // TODO: extract this from the comment block if available
   let description, title, summary, examples, _return
 
-  let method = {}
-  let signature = name + '(' + params.map(param => {
-    return param.name + (param.type ? `: ${param.type}` : '')
-  }).join(', ') + ')'
-  if (_return) signature += `: ${_return.type}`
-  method.signature = signature
-  method.params = params
-  if (_return) method.return = _return
-  if (examples) method.examples = examples
-
-  // TODO: how would there be multiple method specs?
-  let methods = {}
-  methods[signature] = method
-
   let commentBlock = getDocForDecl(code, decl, commentBlocks)
   if (commentBlock) {
     let details = extractFunctionSpecFromDoc(commentBlock.text)
@@ -63,41 +43,45 @@ export default function compileFunction (name, decl, code, commentBlocks) {
     if (details.title) title = details.title
     if (details.summary) summary = details.summary
     if (details.params) {
-      if (!method.params) {
-        console.error('signature does not have params but found @param in documentation')
-      } else {
-        let params = {}
-        method.params.map(p => {
-          params[p.name] = p
-        })
-        for (let [_name, _p] of details.params) {
-          let p = params[_name]
-          if (!p) {
-            console.error('@param given for a parameter that is not contained in the signature')
-            continue
-          }
-          Object.assign(p, _p)
+      let paramsMap = {}
+      params.forEach(p => {
+        paramsMap[p.name] = p
+      })
+      for (let [_name, _p] of details.params) {
+        let p = paramsMap[_name]
+        if (!p) {
+          console.error('@param given for a parameter that is not contained in the signature')
+          continue
         }
+        Object.assign(p, _p)
       }
     }
-    if (details._return) {
-      method['return'] = details._return
-    }
-    if (details.examples) {
-      method.examples = details.examples
-    }
+    _return = details._return
+    examples = details.examples
   }
 
-  spec.methods = methods
-  if (description) spec.description = description
+  let method = {}
+  let signature = name + '(' + params.map(param => {
+    return param.name + (param.type ? `: ${param.type}` : '')
+  }).join(', ') + ')'
+  if (_return) signature += `: ${_return.type}`
+  method.signature = signature
+  method.params = params
+  if (_return) method.return = _return
+  if (examples) method.examples = examples
+
+  let spec = {
+    type: 'function',
+    code,
+    name
+  }
   if (title) spec.title = title
   if (summary) spec.summary = summary
-
-  // Ensure that there is always at least one method
-  // if (Object.values(methods).length === 0) {
-  //   let signature = name + '()'
-  //   methods[signature] = { signature }
-  // }
+  if (description) spec.description = description
+  // TODO: how would there be multiple method specs?
+  let methods = {}
+  methods[signature] = method
+  spec.methods = methods
 
   return spec
 }
