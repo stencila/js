@@ -29,7 +29,7 @@ const COMMONJS_OPTS = {
 // the browser bundle needs an alias for 'doctrine'
 // pointing to the generated doctrine browser bundle
 b.task('build:lib:browser', ['bundle:doctrine'], () => {
-  b.js('src/index.js', {
+  b.js('index.js', {
     output: [
       {
         file: 'dist/stencila-js.js',
@@ -47,7 +47,7 @@ b.task('build:lib:browser', ['bundle:doctrine'], () => {
 
 // bundling the lib with rollup for node
 b.task('build:lib:node', () => {
-  b.js('src/index.js', {
+  b.js('index.js', {
     output: [{
       file: 'dist/stencila-js.cjs.js',
       format: 'cjs'
