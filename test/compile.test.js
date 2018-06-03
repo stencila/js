@@ -376,6 +376,32 @@ test('compile: function', t => {
   t.end()
 })
 
+test('compile: multiple occurrence', t => {
+  let code, actual, expected
+
+  // should not result in multiple inputs of name 'x'
+  code = 'x*x*x'
+  actual = compileJavascript(code)
+  expected = {
+    inputs: [{ name: 'x' }],
+    outputs: [],
+    messages: []
+  }
+  _isFulfilled(t, actual, expected)
+
+  // symbols should be in order of occurrence
+  code = 'x**y*x*y*x'
+  actual = compileJavascript(code)
+  expected = {
+    inputs: [{ name: 'x' }, { name: 'y' }],
+    outputs: [],
+    messages: []
+  }
+  _isFulfilled(t, actual, expected)
+
+  t.end()
+})
+
 function _isFulfilled (t, cell, expected) {
   let actual = {}
   Object.keys(expected).forEach(n => {
