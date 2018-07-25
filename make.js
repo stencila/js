@@ -21,57 +21,62 @@ b.task('bundle:doctrine', () => {
   })
 })
 
+const COMMONJS_OPTS = {
+  namedExports: { 'acorn/dist/walk.js': [ 'simple', 'base', 'ancestor' ] }
+}
+
 // bundling the lib with rollup for browsers
 // the browser bundle needs an alias for 'doctrine'
 // pointing to the generated doctrine browser bundle
 b.task('build:lib:browser', ['bundle:doctrine'], () => {
-  b.js('src/index.js', {
+  b.js('index.js', {
     output: [
       {
-        file: 'dist/stencila-js.min.js',
+        file: 'dist/stencila-js.js',
         format: 'umd',
-        name: 'StencilaJs'
+        name: 'stencilaJs'
       }
     ],
     alias: {
       'doctrine': path.join(__dirname, 'tmp', 'doctrine.browser.js')
     },
-    commonjs: true,
-    minify: true
+    commonjs: COMMONJS_OPTS
+    // minify: true
   })
 })
 
 // bundling the lib with rollup for node
 b.task('build:lib:node', () => {
-  b.js('src/index.js', {
-    output: [
-      {
-        file: 'dist/stencila-js.cjs.js',
-        format: 'cjs'
-      }
-    ],
+  b.js('index.js', {
+    output: [{
+      file: 'dist/stencila-js.cjs.js',
+      format: 'cjs'
+    }],
     external: ['doctrine'],
-    commonjs: true
+    commonjs: COMMONJS_OPTS
   })
 })
 
 // bundling tests for use in the browser
-b.task('build:test:browser', ['bundle:doctrine'], () => {
+b.task('build:test:browser', ['bundle:doctrine', 'build:lib:browser'], () => {
+  const INDEX_JS = path.join(__dirname, 'index.js')
+  let globals = {
+    'tape': 'substanceTest.test',
+    'substance-test': 'substanceTest',
+    'lodash-es': 'substance'
+  }
+  globals[INDEX_JS] = 'stencilaJs'
   b.js('test/index.js', {
-    output: [
-      {
-        file: 'tmp/tests.js',
-        format: 'umd',
-        name: 'StencilaJsTests',
-        globals: {
-          'tape': 'substanceTest.test'
-        }
-      }
-    ],
+    output: [{
+      file: 'tmp/tests.js',
+      format: 'umd',
+      name: 'StencilaJsTests',
+      globals
+    }],
     alias: {
       'doctrine': path.join(__dirname, 'tmp', 'doctrine.browser.js')
     },
-    external: [ 'tape' ],
-    commonjs: true
+    external: [ 'tape', 'substance-test', 'lodash-es', INDEX_JS ],
+    commonjs: COMMONJS_OPTS
   })
 })
