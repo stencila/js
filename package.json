@@ -1,6 +1,6 @@
 {
   "name": "stencila-js",
-  "version": "0.26.1",
+  "version": "0.27.0-preview.1",
   "description": "Stencila for Javascript",
   "jsxnext:main": "index.js",
   "main": "dist/stencila-js.cjs.js",
