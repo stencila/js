@@ -186,6 +186,8 @@ function _declarePattern (node, scope) {
 }
 
 function _declareModuleSpecifier (ast, node) {
-  ast.locals = ast.locals || {}
-  ast.locals[node.local.name] = true
+  if (node.local) {
+    ast.locals = ast.locals || {}
+    ast.locals[node.local.name] = true
+  }
 }

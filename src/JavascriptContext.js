@@ -157,7 +157,7 @@ export default class JavascriptContext {
       } else {
         let type = value.type
         let data = value.data
-        // TODO: if it is a local function, then take it from
+        // TODO: if it is a local function, then take it from this context
         // otherwise create a call proxy
         if (type === 'function') {
           if (data.context === this._id) {
@@ -185,8 +185,12 @@ export default class JavascriptContext {
   }
 
   resolveFunction (node) {
-    // TODO: there is
-    const { id, name, library } = node.data
+    if (!node) {
+      throw new Error('Illegal argument')
+    }
+    // TODO: this is used incosistently
+    let data = node.data || node.value.data
+    const { id, name, library } = data
     let value
     // first try to look up via id
     if (id) {

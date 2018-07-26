@@ -60,9 +60,11 @@ export default async function collectArgs (func, call, hooks) {
       argsIndex++
     }
   }
+
   // Check that there are no extra, unused arguments in call
   if (call.args && argsUsed < call.args.length) {
     const extra = call.args.length - argsUsed
+    console.error(`Function was supplied ${extra} extra arguments`, call, func)
     throw new Error(`Function was supplied ${extra} extra arguments`)
   }
   if (call.namedArgs && namedArgsUsed.length < Object.keys(call.namedArgs).length) {

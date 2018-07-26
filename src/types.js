@@ -88,34 +88,38 @@ export function type (value) {
   A helper to get a coerced array value from a given array of values.
 */
 export function coerceArray (arr) {
+  let type = coercedArrayType(arr)
+  let data = arr.map(v => {
+    if (v) {
+      return v.data
+    } else {
+      return undefined
+    }
+  })
   return {
-    type: coercedArrayType(arr),
-    data: arr.map(v => {
-      if (v) {
-        return v.data
-      } else {
-        return undefined
-      }
-    })
+    type,
+    data
   }
 }
 
-function _mostSpecificType (type, next) {
-  if (!next) return 'any'
-  let nextType = next.type
-  if (!type) return nextType
-  if (type === nextType) {
-    return type
-  }
+// used to reduce an array type by 'bubbling' a type
+// through an array of types coercing to the most specific possible
+// TODO: what is type actually?
+function _mostSpecificType (type, val) {
+  // treat nil is any
+  if (isNil(val)) return 'any'
+  let valType = val.type
+  if (!type) return valType || type(val)
+  if (type === valType) return type
   switch (type) {
     case 'number': {
-      if (nextType === 'integer') {
+      if (valType === 'integer') {
         return 'number'
       }
       break
     }
     case 'integer': {
-      if (nextType === 'number') {
+      if (valType === 'number') {
         return 'number'
       }
       break
