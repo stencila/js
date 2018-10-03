@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/JavascriptContext.js | stencila-js</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Stencila for Javascript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="stencila-js"><meta property="twitter:description" content="Stencila for Javascript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/stencila/js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/JavascriptContext.js~JavascriptContext.html">JavascriptContext</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-collectArgs">collectArgs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-compileFunction">compileFunction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-compileJavascript">compileJavascript</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extractFunctionSpecFromDoc">extractFunctionSpecFromDoc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findGlobals">findGlobals</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extractDetailsFromError">extractDetailsFromError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parseValue">parseValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-coerceArray">coerceArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-coercedArrayType">coercedArrayType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pack">pack</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-type">type</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-unpack">unpack</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-JSGLOBALS">JSGLOBALS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-childrenTypes">childrenTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-descendantTypes">descendantTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-parentTypes">parentTypes</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/JavascriptContext.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { isNil } from &apos;substance&apos;
+import compileJavascript from &apos;./compileJavascript&apos;
+import packError from &apos;./packError&apos;
+import collectArgs from &apos;./collectArgs&apos;
+import { pack, unpack } from &apos;./types&apos;
+
+/**
+ * An execution context for Javascript.
+ */
+export default class JavascriptContext {
+  constructor (host, id) {
+    this._host = host
+
+    // every context needs to have a unique id
+    if (!id) throw new Error(&apos;id is required&apos;)
+    this._id = id
+
+    /**
+     * Values residing in this context.
+     *
+     * @type {Map} a map of packed values
+     */
+    this._values = new Map()
+
+    // TODO: might be that we are interested in a more general approach
+    // involving &apos;library&apos; type values.
+    this._libraries = new Map()
+  }
+
+  get id () {
+    return this._id
+  }
+
+  // NOTE: not clear yet if this will stay
+  importLibrary (lib) {
+    this._libraries.set(lib.name, lib)
+  }
+
+  pack (value, opts = {}) {
+    opts.context = this
+    return pack(value, opts)
+  }
+
+  unpack (pkg) {
+    return unpack(pkg)
+  }
+
+  async compile (cell) {
+    Object.assign(cell, compileJavascript(cell.code, cell))
+    return cell
+  }
+
+  async execute (cell) {
+    // don&apos;t execute empty code
+    if (!cell.code) return cell
+
+    let outputs = cell.outputs
+    // TODO: we need some kind of sourcemap here, e.g. using magicstring
+    // TODO: support multi-outputs by returning an array of values
+    let code
+    // exporting a named expression
+    if (outputs.length &gt; 0 &amp;&amp; outputs[0].name) {
+      code = [cell.code, &apos;;\nreturn &apos;, outputs[0].name].join(&apos;&apos;)
+    // simple expression (unnamed)
+    } else if (cell.expr) {
+      code = [&apos;return (&apos;, cell.code, &apos;)&apos;].join(&apos;&apos;)
+    // multi-line with implicit return
+    } else if (cell.implicitReturn) {
+      code = [cell.code, &apos;;\nreturn &apos;, cell.implicitReturn].join(&apos;&apos;)
+    } else {
+      code = cell.code
+    }
+    // Get the names and values of cell inputs
+    let {inputNames, inputValues} = await this._collectInputs(cell.inputs)
+    // Construct a function from them
+    const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor
+    const func = new AsyncFunction(...inputNames, code) // eslint-disable-line no-new-func
+    // Execute the function, using input values as arguments
+    // an converting exceptions into error messages
+    let result
+    try {
+      result = await func(...inputValues)
+    } catch (error) {
+      let { message, line, column } = packError(error)
+      cell.messages.push({
+        type: &apos;error&apos;,
+        line,
+        column,
+        message
+      })
+    }
+
+    const setValue = async (output, value) =&gt; {
+      let packedValue = await this.pack(value, { cell })
+      output.value = packedValue
+      // TODO: rethink. Polluting the global scope is not a good idea.
+      // For instance a  user could run two notebooks which
+      // happen to contain a local function with the same name
+      // Instead the function should be stored maybe with
+      // an id derived from cell and output name
+      if (value &amp;&amp; packedValue.type === &apos;function&apos;) {
+        const spec = output.spec
+        let funcEntry = {
+          id: packedValue.data.id,
+          type: &apos;function&apos;,
+          name: spec.name,
+          methods: spec.methods,
+          body: value
+        }
+        this._values.set(funcEntry.id, funcEntry)
+      }
+    }
+
+    if (typeof result === &apos;undefined&apos;) {
+      // If the cell has an output but that output is undefined
+      // then treat it as an error
+      cell.messages.push({
+        type: &apos;error&apos;,
+        message: &apos;Cell output value is undefined&apos;
+      })
+    } else {
+      // TODO: thing about multi-outputs. When the time has come.
+      // implicit returns: either if cells.expr or cells. there are two cases
+      if (cell.implicitReturn) {
+        outputs.push({})
+      }
+      if (outputs.length &gt; 0) {
+        await setValue(outputs[0], result)
+      }
+    }
+
+    return cell
+  }
+
+  async evaluateCall (call) {
+    const func = this.resolveFunction(call.func)
+    let { args, namedArgs } = await collectArgs(func, call, { unpack: v =&gt; this.unpack(v) })
+    let value
+    if (namedArgs) {
+      value = func.body(...args, namedArgs)
+    } else {
+      value = func.body(...args)
+    }
+    if (value !== undefined) {
+      call.value = await this.pack(value)
+    }
+    return call
+  }
+
+  async _collectInputs (inputs) {
+    let inputNames = []
+    let inputValues = []
+    for (let {name, value} of inputs) {
+      let inputValue
+      if (isNil(value)) {
+        inputValue = null
+      } else {
+        let type = value.type
+        let data = value.data
+        // TODO: if it is a local function, then take it from
+        // otherwise create a call proxy
+        if (type === &apos;function&apos;) {
+          if (data.context === this._id) {
+            inputValue = this.resolveFunction(value)
+          } else {
+            console.error(&apos;SUPPORT CALLING ACROSS CONTEXTS VIA HOST AND FUNCTION VALUES&apos;)
+            inputValue = function () {}
+          }
+        } else {
+          inputValue = await this.unpack(value)
+        }
+      }
+
+      inputNames.push(name)
+      inputValues.push(inputValue)
+    }
+    return { inputNames, inputValues }
+  }
+
+  resolve (node) {
+    // ATM we only support function types
+    if (node.type === &apos;function&apos;) {
+      return this.resolveFunction(node)
+    }
+  }
+
+  resolveFunction (node) {
+    // TODO: there is
+    const { id, name, library } = node.data
+    let value
+    // first try to look up via id
+    if (id) {
+      let entry = this._values.get(id)
+      value = entry
+    }
+    // TODO: if we want something like this
+    // then try to find the value in a specific library
+    if (!value &amp;&amp; library &amp;&amp; name) {
+      // allow for lookup for a specific library value
+      let lib = this._libraries.get(library)
+      // TODO: library should just have values
+      // for sake of consistency, we should think about a similar
+      // layout as other value types
+      value = lib.funcs[name]
+    }
+    // finally look for the value in all registered libraries
+    if (!value &amp;&amp; name) {
+      // look in all libraries
+      console.error(&apos;TODO: would prefer to reference a specific library&apos;)
+      // TODO: rethink. This is a bit too implicit
+      // IMO the engine should be aware when a library symbol
+      // is used and add everything to resolve this explicitly
+      for (let lib of this._libraries.values()) {
+        value = lib.funcs[name]
+        if (value) break
+      }
+    }
+    if (!value) throw new Error(`Could not resolve value &quot;${id || name}&quot;`)
+    return value
+  }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

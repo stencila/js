@@ -1,0 +1,2428 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "src/JSGLOBALS.js",
+    "content": "/**\n * Global variable names that should be ignored when determining\n * cell inputs with the `compile()` method\n *\n * @type {Array}\n */\nconst JSGLOBALS = [\n  // A list of ES6 globals obtained using: Object.keys(require('globals').es6)\n  'Array', 'ArrayBuffer', 'Boolean', 'constructor', 'DataView', 'Date', 'decodeURI', 'decodeURIComponent',\n  'encodeURI', 'encodeURIComponent', 'Error', 'escape', 'eval', 'EvalError', 'Float32Array', 'Float64Array',\n  'Function', 'hasOwnProperty', 'Infinity', 'Int16Array', 'Int32Array', 'Int8Array', 'isFinite', 'isNaN',\n  'isPrototypeOf', 'JSON', 'Map', 'Math', 'NaN', 'Number', 'Object', 'parseFloat', 'parseInt', 'Promise',\n  'propertyIsEnumerable', 'Proxy', 'RangeError', 'ReferenceError', 'Reflect', 'RegExp', 'Set', 'String',\n  'Symbol', 'SyntaxError', 'System', 'toLocaleString', 'toString', 'TypeError', 'Uint16Array', 'Uint32Array',\n  'Uint8Array', 'Uint8ClampedArray', 'undefined', 'unescape', 'URIError', 'valueOf', 'WeakMap', 'WeakSet',\n  // A list of Node.js globals obtained using: Object.keys(require('globals').node)\n  '__dirname', '__filename', 'arguments', 'Buffer', 'clearImmediate', 'clearInterval', 'clearTimeout', 'console',\n  'exports', 'GLOBAL', 'global', 'Intl', 'module', 'process', 'require', 'root', 'setImmediate', 'setInterval', 'setTimeout'\n]\n\nexport default JSGLOBALS\n",
+    "static": true,
+    "longname": "/home/travis/build/stencila/js/src/JSGLOBALS.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "variable",
+    "name": "JSGLOBALS",
+    "memberof": "src/JSGLOBALS.js",
+    "static": true,
+    "longname": "src/JSGLOBALS.js~JSGLOBALS",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/JSGLOBALS.js",
+    "importStyle": "JSGLOBALS",
+    "description": "Global variable names that should be ignored when determining\ncell inputs with the `compile()` method",
+    "lineNumber": 7,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 50,
+    "kind": "file",
+    "name": "src/JavascriptContext.js",
+    "content": "import { isNil } from 'substance'\nimport compileJavascript from './compileJavascript'\nimport packError from './packError'\nimport collectArgs from './collectArgs'\nimport { pack, unpack } from './types'\n\n/**\n * An execution context for Javascript.\n */\nexport default class JavascriptContext {\n  constructor (host, id) {\n    this._host = host\n\n    // every context needs to have a unique id\n    if (!id) throw new Error('id is required')\n    this._id = id\n\n    /**\n     * Values residing in this context.\n     *\n     * @type {Map} a map of packed values\n     */\n    this._values = new Map()\n\n    // TODO: might be that we are interested in a more general approach\n    // involving 'library' type values.\n    this._libraries = new Map()\n  }\n\n  get id () {\n    return this._id\n  }\n\n  // NOTE: not clear yet if this will stay\n  importLibrary (lib) {\n    this._libraries.set(lib.name, lib)\n  }\n\n  pack (value, opts = {}) {\n    opts.context = this\n    return pack(value, opts)\n  }\n\n  unpack (pkg) {\n    return unpack(pkg)\n  }\n\n  async compile (cell) {\n    Object.assign(cell, compileJavascript(cell.code, cell))\n    return cell\n  }\n\n  async execute (cell) {\n    // don't execute empty code\n    if (!cell.code) return cell\n\n    let outputs = cell.outputs\n    // TODO: we need some kind of sourcemap here, e.g. using magicstring\n    // TODO: support multi-outputs by returning an array of values\n    let code\n    // exporting a named expression\n    if (outputs.length > 0 && outputs[0].name) {\n      code = [cell.code, ';\\nreturn ', outputs[0].name].join('')\n    // simple expression (unnamed)\n    } else if (cell.expr) {\n      code = ['return (', cell.code, ')'].join('')\n    // multi-line with implicit return\n    } else if (cell.implicitReturn) {\n      code = [cell.code, ';\\nreturn ', cell.implicitReturn].join('')\n    } else {\n      code = cell.code\n    }\n    // Get the names and values of cell inputs\n    let {inputNames, inputValues} = await this._collectInputs(cell.inputs)\n    // Construct a function from them\n    const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor\n    const func = new AsyncFunction(...inputNames, code) // eslint-disable-line no-new-func\n    // Execute the function, using input values as arguments\n    // an converting exceptions into error messages\n    let result\n    try {\n      result = await func(...inputValues)\n    } catch (error) {\n      let { message, line, column } = packError(error)\n      cell.messages.push({\n        type: 'error',\n        line,\n        column,\n        message\n      })\n    }\n\n    const setValue = async (output, value) => {\n      let packedValue = await this.pack(value, { cell })\n      output.value = packedValue\n      // TODO: rethink. Polluting the global scope is not a good idea.\n      // For instance a  user could run two notebooks which\n      // happen to contain a local function with the same name\n      // Instead the function should be stored maybe with\n      // an id derived from cell and output name\n      if (value && packedValue.type === 'function') {\n        const spec = output.spec\n        let funcEntry = {\n          id: packedValue.data.id,\n          type: 'function',\n          name: spec.name,\n          methods: spec.methods,\n          body: value\n        }\n        this._values.set(funcEntry.id, funcEntry)\n      }\n    }\n\n    if (typeof result === 'undefined') {\n      // If the cell has an output but that output is undefined\n      // then treat it as an error\n      cell.messages.push({\n        type: 'error',\n        message: 'Cell output value is undefined'\n      })\n    } else {\n      // TODO: thing about multi-outputs. When the time has come.\n      // implicit returns: either if cells.expr or cells. there are two cases\n      if (cell.implicitReturn) {\n        outputs.push({})\n      }\n      if (outputs.length > 0) {\n        await setValue(outputs[0], result)\n      }\n    }\n\n    return cell\n  }\n\n  async evaluateCall (call) {\n    const func = this.resolveFunction(call.func)\n    let { args, namedArgs } = await collectArgs(func, call, { unpack: v => this.unpack(v) })\n    let value\n    if (namedArgs) {\n      value = func.body(...args, namedArgs)\n    } else {\n      value = func.body(...args)\n    }\n    if (value !== undefined) {\n      call.value = await this.pack(value)\n    }\n    return call\n  }\n\n  async _collectInputs (inputs) {\n    let inputNames = []\n    let inputValues = []\n    for (let {name, value} of inputs) {\n      let inputValue\n      if (isNil(value)) {\n        inputValue = null\n      } else {\n        let type = value.type\n        let data = value.data\n        // TODO: if it is a local function, then take it from\n        // otherwise create a call proxy\n        if (type === 'function') {\n          if (data.context === this._id) {\n            inputValue = this.resolveFunction(value)\n          } else {\n            console.error('SUPPORT CALLING ACROSS CONTEXTS VIA HOST AND FUNCTION VALUES')\n            inputValue = function () {}\n          }\n        } else {\n          inputValue = await this.unpack(value)\n        }\n      }\n\n      inputNames.push(name)\n      inputValues.push(inputValue)\n    }\n    return { inputNames, inputValues }\n  }\n\n  resolve (node) {\n    // ATM we only support function types\n    if (node.type === 'function') {\n      return this.resolveFunction(node)\n    }\n  }\n\n  resolveFunction (node) {\n    // TODO: there is\n    const { id, name, library } = node.data\n    let value\n    // first try to look up via id\n    if (id) {\n      let entry = this._values.get(id)\n      value = entry\n    }\n    // TODO: if we want something like this\n    // then try to find the value in a specific library\n    if (!value && library && name) {\n      // allow for lookup for a specific library value\n      let lib = this._libraries.get(library)\n      // TODO: library should just have values\n      // for sake of consistency, we should think about a similar\n      // layout as other value types\n      value = lib.funcs[name]\n    }\n    // finally look for the value in all registered libraries\n    if (!value && name) {\n      // look in all libraries\n      console.error('TODO: would prefer to reference a specific library')\n      // TODO: rethink. This is a bit too implicit\n      // IMO the engine should be aware when a library symbol\n      // is used and add everything to resolve this explicitly\n      for (let lib of this._libraries.values()) {\n        value = lib.funcs[name]\n        if (value) break\n      }\n    }\n    if (!value) throw new Error(`Could not resolve value \"${id || name}\"`)\n    return value\n  }\n}\n",
+    "static": true,
+    "longname": "/home/travis/build/stencila/js/src/JavascriptContext.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 51,
+    "kind": "class",
+    "name": "JavascriptContext",
+    "memberof": "src/JavascriptContext.js",
+    "static": true,
+    "longname": "src/JavascriptContext.js~JavascriptContext",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/JavascriptContext.js",
+    "importStyle": "JavascriptContext",
+    "description": "An execution context for Javascript.",
+    "lineNumber": 10,
+    "interface": false
+  },
+  {
+    "__docId__": 52,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/JavascriptContext.js~JavascriptContext",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/JavascriptContext.js~JavascriptContext#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true
+  },
+  {
+    "__docId__": 53,
+    "kind": "member",
+    "name": "_host",
+    "memberof": "src/JavascriptContext.js~JavascriptContext",
+    "static": false,
+    "longname": "src/JavascriptContext.js~JavascriptContext#_host",
+    "access": "private",
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 54,
+    "kind": "member",
+    "name": "_id",
+    "memberof": "src/JavascriptContext.js~JavascriptContext",
+    "static": false,
+    "longname": "src/JavascriptContext.js~JavascriptContext#_id",
+    "access": "private",
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 55,
+    "kind": "member",
+    "name": "_values",
+    "memberof": "src/JavascriptContext.js~JavascriptContext",
+    "static": false,
+    "longname": "src/JavascriptContext.js~JavascriptContext#_values",
+    "access": "private",
+    "description": "Values residing in this context.",
+    "lineNumber": 23,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Map"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 56,
+    "kind": "member",
+    "name": "_libraries",
+    "memberof": "src/JavascriptContext.js~JavascriptContext",
+    "static": false,
+    "longname": "src/JavascriptContext.js~JavascriptContext#_libraries",
+    "access": "private",
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 57,
+    "kind": "get",
+    "name": "id",
+    "memberof": "src/JavascriptContext.js~JavascriptContext",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/JavascriptContext.js~JavascriptContext#id",
+    "access": "public",
+    "description": null,
+    "lineNumber": 30,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 58,
+    "kind": "method",
+    "name": "importLibrary",
+    "memberof": "src/JavascriptContext.js~JavascriptContext",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/JavascriptContext.js~JavascriptContext#importLibrary",
+    "access": "public",
+    "description": null,
+    "lineNumber": 35,
+    "undocument": true,
+    "params": [
+      {
+        "name": "lib",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 59,
+    "kind": "method",
+    "name": "pack",
+    "memberof": "src/JavascriptContext.js~JavascriptContext",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/JavascriptContext.js~JavascriptContext#pack",
+    "access": "public",
+    "description": null,
+    "lineNumber": 39,
+    "undocument": true,
+    "params": [
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "opts",
+        "optional": true,
+        "types": [
+          "{}"
+        ],
+        "defaultRaw": {},
+        "defaultValue": "{}"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 60,
+    "kind": "method",
+    "name": "unpack",
+    "memberof": "src/JavascriptContext.js~JavascriptContext",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/JavascriptContext.js~JavascriptContext#unpack",
+    "access": "public",
+    "description": null,
+    "lineNumber": 44,
+    "undocument": true,
+    "params": [
+      {
+        "name": "pkg",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 61,
+    "kind": "method",
+    "name": "compile",
+    "memberof": "src/JavascriptContext.js~JavascriptContext",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "src/JavascriptContext.js~JavascriptContext#compile",
+    "access": "public",
+    "description": null,
+    "lineNumber": 48,
+    "undocument": true,
+    "params": [
+      {
+        "name": "cell",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 62,
+    "kind": "method",
+    "name": "execute",
+    "memberof": "src/JavascriptContext.js~JavascriptContext",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "src/JavascriptContext.js~JavascriptContext#execute",
+    "access": "public",
+    "description": null,
+    "lineNumber": 53,
+    "undocument": true,
+    "params": [
+      {
+        "name": "cell",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 63,
+    "kind": "method",
+    "name": "evaluateCall",
+    "memberof": "src/JavascriptContext.js~JavascriptContext",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "src/JavascriptContext.js~JavascriptContext#evaluateCall",
+    "access": "public",
+    "description": null,
+    "lineNumber": 135,
+    "undocument": true,
+    "params": [
+      {
+        "name": "call",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 64,
+    "kind": "method",
+    "name": "_collectInputs",
+    "memberof": "src/JavascriptContext.js~JavascriptContext",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "src/JavascriptContext.js~JavascriptContext#_collectInputs",
+    "access": "private",
+    "description": null,
+    "lineNumber": 150,
+    "undocument": true,
+    "params": [
+      {
+        "name": "inputs",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "{\"inputNames\": *, \"inputValues\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 65,
+    "kind": "method",
+    "name": "resolve",
+    "memberof": "src/JavascriptContext.js~JavascriptContext",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/JavascriptContext.js~JavascriptContext#resolve",
+    "access": "public",
+    "description": null,
+    "lineNumber": 180,
+    "undocument": true,
+    "params": [
+      {
+        "name": "node",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 66,
+    "kind": "method",
+    "name": "resolveFunction",
+    "memberof": "src/JavascriptContext.js~JavascriptContext",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/JavascriptContext.js~JavascriptContext#resolveFunction",
+    "access": "public",
+    "description": null,
+    "lineNumber": 187,
+    "undocument": true,
+    "params": [
+      {
+        "name": "node",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 67,
+    "kind": "file",
+    "name": "src/collectArgs.js",
+    "content": "/**\n* A helper method interpreting a given function definition\n* following the function spec from TODO:link-to-func-specification\n*/\nexport default async function collectArgs (func, call, hooks) {\n  // HACK: just use the first method\n  // TODO: why would there be multiple ones?\n  // FIXME: this might be very bad, because Object does\n  // not have a guaranteed order\n  const method = Object.values(func.methods)[0]\n  const unpack = hooks.unpack\n  let args = []\n  let namedArgs\n\n  // Using `method.params` specification, map the call's arguments onto the method's parameters\n  let argsIndex = 0\n  let argsUsed = 0\n  let namedArgsUsed = []\n  if (method.params) {\n    for (let param of method.params) {\n      if (param.repeats) {\n        // Put the remaining arguments into an array\n        let remaining = []\n        for (; argsIndex < call.args.length; argsIndex++) {\n          remaining.push(await unpack(call.args[argsIndex]))\n          argsUsed++\n        }\n        args.push(remaining)\n        break\n      } else if (param.extends) {\n        // Put the remaining named arguments into an object\n        if (call.namedArgs) {\n          namedArgs = {}\n          for (let name of Object.keys(call.namedArgs)) {\n            if (namedArgsUsed.indexOf(name) < 0) {\n              namedArgs[name] = await unpack(call.namedArgs[name])\n              namedArgsUsed.push(param.name)\n            }\n          }\n        }\n        break\n      } else {\n        // Get the argument for the parameter either by name or by index\n        let arg\n        if (call.namedArgs) {\n          arg = call.namedArgs[param.name]\n          if (arg) namedArgsUsed.push(param.name)\n        }\n        if (!arg && call.args) {\n          arg = call.args[argsIndex]\n          if (arg) argsUsed++\n        }\n        if (!arg && !param.default) {\n          let msg = `Function '${func.name}' requires parameter '${param.name}'`\n          throw new Error(msg)\n        }\n        if (arg) args.push(await unpack(arg))\n        else args.push(undefined)\n      }\n      argsIndex++\n    }\n  }\n  // Check that there are no extra, unused arguments in call\n  if (call.args && argsUsed < call.args.length) {\n    const extra = call.args.length - argsUsed\n    throw new Error(`Function was supplied ${extra} extra arguments`)\n  }\n  if (call.namedArgs && namedArgsUsed.length < Object.keys(call.namedArgs).length) {\n    const extra = Object.keys(call.namedArgs).filter((arg) => namedArgsUsed.indexOf(arg) < 0)\n      .map((arg) => `\"${arg}\"`)\n      .join(', ')\n    throw new Error(`Function was supplied extra named arguments ${extra}`)\n  }\n  return { args, namedArgs }\n}\n",
+    "static": true,
+    "longname": "/home/travis/build/stencila/js/src/collectArgs.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 68,
+    "kind": "function",
+    "name": "collectArgs",
+    "memberof": "src/collectArgs.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/collectArgs.js~collectArgs",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/collectArgs.js",
+    "importStyle": "collectArgs",
+    "description": "A helper method interpreting a given function definition\nfollowing the function spec from TODO:link-to-func-specification",
+    "lineNumber": 5,
+    "params": [
+      {
+        "name": "func",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "call",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "hooks",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "{\"args\": *, \"namedArgs\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 69,
+    "kind": "file",
+    "name": "src/compileFunction.js",
+    "content": "import parseValue from './parseValue'\nimport extractFunctionSpecFromDoc from './extractFunctionSpecFromDoc'\n\n// TODO: bring back features from the original implementation.\nexport default function compileFunction (name, decl, code, commentBlocks) {\n  let params = []\n  for (let node of decl.params) {\n    let param = {}\n    switch (node.type) {\n      case 'Identifier':\n        // TODO: what is an 'extensible' parameter?\n        if (node.name.substring(0, 3) === '___') {\n          param.name = node.name.substring(3)\n          param.extends = true\n        } else {\n          param.name = node.name\n        }\n        break\n      case 'RestElement':\n        param.name = node.argument.name\n        param.repeats = true\n        break\n      case 'AssignmentPattern':\n        param.name = node.left.name\n        param.default = parseValue(code.substring(node.right.start, node.right.end))\n        break\n      default:\n        throw new Error(`Unhandled parameter node type \"${node.type}\"`)\n    }\n    params.push(param)\n  }\n\n  // TODO: extract this from the comment block if available\n  let description, title, summary, examples, _return\n\n  let commentBlock = getDocForDecl(code, decl, commentBlocks)\n  if (commentBlock) {\n    let details = extractFunctionSpecFromDoc(commentBlock.text)\n    if (details.name && name !== details.name) {\n      console.error('@name does not match function name')\n    }\n    if (details.description) description = details.description\n    if (details.title) title = details.title\n    if (details.summary) summary = details.summary\n    if (details.params) {\n      let paramsMap = {}\n      params.forEach(p => {\n        paramsMap[p.name] = p\n      })\n      for (let [_name, _p] of details.params) {\n        let p = paramsMap[_name]\n        if (!p) {\n          console.error('@param given for a parameter that is not contained in the signature')\n          continue\n        }\n        Object.assign(p, _p)\n      }\n    }\n    _return = details._return\n    examples = details.examples\n  }\n\n  let method = {}\n  let signature = name + '(' + params.map(param => {\n    return param.name + (param.type ? `: ${param.type}` : '')\n  }).join(', ') + ')'\n  if (_return) signature += `: ${_return.type}`\n  method.signature = signature\n  method.params = params\n  if (_return) method.return = _return\n  if (examples) method.examples = examples\n\n  let spec = {\n    type: 'function',\n    code,\n    name\n  }\n  if (title) spec.title = title\n  if (summary) spec.summary = summary\n  if (description) spec.description = description\n  // TODO: how would there be multiple method specs?\n  let methods = {}\n  methods[signature] = method\n  spec.methods = methods\n\n  return spec\n}\n\n// only a comment block directly in front of the function decl is considered\nfunction getDocForDecl (code, decl, commentBlocks) {\n  for (let i = 0; i < commentBlocks.length; i++) {\n    let block = commentBlocks[i]\n    // we can stop early as the blocks are sorted\n    if (block.end > decl.start) return\n    // only whitespace is allowed between the comment block and the declaration\n    if (/^\\s*$/.exec(code.slice(block.end, decl.start))) {\n      return block\n    }\n  }\n}\n",
+    "static": true,
+    "longname": "/home/travis/build/stencila/js/src/compileFunction.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 70,
+    "kind": "function",
+    "name": "compileFunction",
+    "memberof": "src/compileFunction.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/compileFunction.js~compileFunction",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/compileFunction.js",
+    "importStyle": "compileFunction",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "params": [
+      {
+        "name": "name",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "decl",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "code",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "commentBlocks",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 71,
+    "kind": "function",
+    "name": "getDocForDecl",
+    "memberof": "src/compileFunction.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/compileFunction.js~getDocForDecl",
+    "access": "public",
+    "export": false,
+    "importPath": "stencila-js/src/compileFunction.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 90,
+    "undocument": true,
+    "params": [
+      {
+        "name": "code",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "decl",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "commentBlocks",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 72,
+    "kind": "file",
+    "name": "src/compileJavascript.js",
+    "content": "import { parse } from 'acorn'\nimport { generate as generateCode } from 'astring/src/astring'\nimport compileFunction from './compileFunction'\nimport findGlobals from './findGlobals'\nimport packError from './packError'\nimport JSGLOBALS from './JSGLOBALS'\n\nconst GLOBALS = new Set(JSGLOBALS)\n\nexport default function compileJavascript (code, options = {}) {\n  const exprOnly = Boolean(options.expr)\n\n  let inputs = []\n  let messages = []\n\n  // Parse the code\n  let ast\n  let docs = []\n  let isExpr\n  try {\n    ast = _parse(code, {\n      onComment: (block, text, start, end) => {\n        if (block) {\n          docs.push({ start, end, text })\n        }\n      }\n    })\n    isExpr = _isSimpleExpression(ast)\n  } catch (error) {\n    messages.push(packError(error))\n  }\n\n  // simple expressions (such as in Sheet cells)\n  if (messages.length === 0 && exprOnly) {\n    if (!isExpr) {\n      messages.push(packError(new Error('Code is not a single, simple expression')))\n    }\n  }\n  // dependency analysis\n  if (messages.length === 0) {\n    // Note: assumingFthat all variables used as globals are inputs\n    let globals = findGlobals(ast, { ignore: GLOBALS })\n    for (let name of globals) {\n      inputs.push({ name })\n    }\n  }\n  // output value extraction\n  let outputName, outputExpr, spec\n  if (messages.length === 0) {\n    ([outputName, outputExpr, spec] = _extractOutput(ast, inputs, code, docs))\n  }\n  let outputs = []\n  // named output, i.e. exporting the result by name\n  if (outputName) {\n    let _output = {}\n    // set name or expr (not both)\n    if (outputName) {\n      _output.name = outputName\n    }\n    if (spec) {\n      _output.spec = spec\n    }\n    outputs.push(_output)\n  }\n\n  let cell = {\n    type: 'cell',\n    code,\n    inputs,\n    outputs,\n    messages\n  }\n\n  if (isExpr) {\n    cell.expr = true\n  }\n  // for complex expressions store the outputExpr\n  // so that we can create a return statement\n  if (outputExpr) {\n    cell.implicitReturn = outputExpr\n  }\n\n  return cell\n}\n\n// helpers\n\nfunction _parse (source, options) {\n  let parseOptions = Object.assign({}, options,\n    {\n      allowReturnOutsideFunction: true,\n      allowImportExportEverywhere: true,\n      allowHashBang: true\n    }\n  )\n  return parse(source, parseOptions)\n}\n\n// See http://esprima.readthedocs.io/en/latest/syntax-tree-format.html#expressions-and-patterns\n// for a list of expression types\nconst DISALLOWED_IN_SIMPLEXPRESSION = [\n  'AssignmentExpression', 'UpdateExpression', 'AwaitExpression', 'Super'\n]\n\nfunction _isSimpleExpression (ast) {\n  if (ast.body.length === 0) return true\n  if (ast.body.length > 1) return false\n  let node = ast.body[0]\n  if (node.type === 'ExpressionStatement') {\n    // Only allow simple expressions\n    return (DISALLOWED_IN_SIMPLEXPRESSION.indexOf(node.expression.type) < 0)\n  }\n  // otherwise\n  return false\n}\n\nfunction _extractOutput (ast, inputs, code, docs) {\n  let name, valueExpr, spec\n  // If the last top level node in the AST is a FunctionDeclaration,\n  // VariableDeclaration or Identifier then use it's name as the name name\n  let last = ast.body.pop()\n  if (last) {\n    switch (last.type) {\n      case 'FunctionDeclaration':\n        name = last.id.name\n        spec = compileFunction(name, last, code, docs)\n        valueExpr = name\n        break\n      case 'ExportDefaultDeclaration':\n        // Currently, only handle exported functions\n        const decl = last.declaration\n        if (decl.type === 'FunctionDeclaration') {\n          name = decl.id.name\n          spec = compileFunction(name, decl, code, docs)\n          valueExpr = name\n        }\n        break\n      case 'VariableDeclaration':\n        name = last.declarations[0].id.name\n        valueExpr = name\n        break\n      case 'ExpressionStatement':\n        if (last.expression.type === 'Identifier') {\n          // If the identifier is not in inputs then use it as the output name\n          const id = last.expression.name\n          if (inputs.filter(({name}) => name === id).length === 0) {\n            name = id\n          }\n        }\n        valueExpr = generateCode(last)\n        break\n      case 'BlockStatement':\n      case 'IfStatement':\n        break\n      default:\n        // During development it can be useful to turn this on\n        throw new Error('Unhandled AST node type: ' + last.type)\n    }\n  }\n  return [name, valueExpr, spec]\n}\n",
+    "static": true,
+    "longname": "/home/travis/build/stencila/js/src/compileJavascript.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 73,
+    "kind": "variable",
+    "name": "GLOBALS",
+    "memberof": "src/compileJavascript.js",
+    "static": true,
+    "longname": "src/compileJavascript.js~GLOBALS",
+    "access": "public",
+    "export": false,
+    "importPath": "stencila-js/src/compileJavascript.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "function",
+    "name": "compileJavascript",
+    "memberof": "src/compileJavascript.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/compileJavascript.js~compileJavascript",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/compileJavascript.js",
+    "importStyle": "compileJavascript",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "params": [
+      {
+        "name": "code",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "options",
+        "optional": true,
+        "types": [
+          "{}"
+        ],
+        "defaultRaw": {},
+        "defaultValue": "{}"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 75,
+    "kind": "function",
+    "name": "_parse",
+    "memberof": "src/compileJavascript.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/compileJavascript.js~_parse",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/compileJavascript.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 88,
+    "undocument": true,
+    "params": [
+      {
+        "name": "source",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "options",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "variable",
+    "name": "DISALLOWED_IN_SIMPLEXPRESSION",
+    "memberof": "src/compileJavascript.js",
+    "static": true,
+    "longname": "src/compileJavascript.js~DISALLOWED_IN_SIMPLEXPRESSION",
+    "access": "public",
+    "export": false,
+    "importPath": "stencila-js/src/compileJavascript.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 101,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string[]"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 77,
+    "kind": "function",
+    "name": "_isSimpleExpression",
+    "memberof": "src/compileJavascript.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/compileJavascript.js~_isSimpleExpression",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/compileJavascript.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 105,
+    "undocument": true,
+    "params": [
+      {
+        "name": "ast",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 78,
+    "kind": "function",
+    "name": "_extractOutput",
+    "memberof": "src/compileJavascript.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/compileJavascript.js~_extractOutput",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/compileJavascript.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 117,
+    "undocument": true,
+    "params": [
+      {
+        "name": "ast",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "inputs",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "code",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "docs",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "undefined[]"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 79,
+    "kind": "file",
+    "name": "src/extractFunctionSpecFromDoc.js",
+    "content": "import doctrine from 'doctrine'\n\nexport default function extractFunctionSpecFromDoc (doc) {\n  let description, name, title, summary, examples, params, _return\n  let parsed = doctrine.parse(doc, {\n    unwrap: true, // let doctrine remove the comment stuff\n    sloppy: true // allow optional parameters to be specified in brackets\n  })\n  description = parsed.description\n  for (let tag of parsed.tags) {\n    switch (tag.title) {\n      // Tags which always apply to the function as a whole\n      case 'name':\n        if (name) console.error('duplicate @name')\n        name = tag.name\n        break\n      case 'title':\n        if (title) console.error('duplicate @title')\n        title = tag.description\n        break\n      case 'summary':\n        if (summary) console.error('duplicate @summary')\n        summary = tag.description\n        break\n      case 'description':\n        if (description) console.error('duplicate @description')\n        description = tag.description\n        break\n      // Tags applied to indivdual methods\n      case 'param':\n        if (!tag.name) {\n          console.error('@param should have a name:  expected format @param [type] <name> [description]')\n        } else {\n          let param = { name: tag.name }\n          if (tag.type) {\n            if (tag.type.type === 'RestType') {\n              param.type = _extractType(tag)\n              param.repeats = true\n            } else if (tag.type.type === 'NameExpression' && tag.type.name.substring(0, 3) === '___') {\n              param.type = tag.type.name.substring(3)\n              param.extends = true\n            } else {\n              param.type = _extractType(tag)\n            }\n          }\n          if (tag.description) param.description = tag.description\n          if (!params) params = new Map()\n          if (params.has(param.name)) {\n            console.error('duplicate @param for ' + param.name)\n          }\n          params.set(param.name, param)\n        }\n        break\n      case 'return':\n        if (!tag.type && !tag.description) {\n          console.error('@return is empty')\n        } else {\n          if (_return) {\n            console.error('duplicate @return')\n          }\n          _return = {}\n          if (tag.type) _return.type = _extractType(tag)\n          if (tag.description) _return.description = tag.description\n        }\n        break\n      case 'example':\n        let example = { usage: tag.description }\n        if (tag.caption) example.caption = tag.caption\n        if (!examples) examples = []\n        examples.push(example)\n        break\n      default:\n        //\n    }\n  }\n  return { name, title, description, summary, examples, params, _return }\n}\n\n// Extract the type specification for a `@param` or `@return` tag\nfunction _extractType (tag) {\n  switch (tag.type.type) {\n    case 'AllLiteral':\n      return 'any'\n    case 'NameExpression':\n      return tag.type.name\n    case 'UnionType':\n      return tag.type.elements.map((element) => element.name).join('|')\n    case 'TypeApplication':\n      return tag.type.expression.name + '[' +\n             tag.type.applications.map((application) => application.name).join(',') + ']'\n    case 'OptionalType':\n      return tag.default ? tag.type.expression.name : 'null'\n    case 'RestType':\n      return tag.type.expression.name\n    default:\n      throw new Error('Unhandled type specification: ' + tag.type.type)\n  }\n}\n",
+    "static": true,
+    "longname": "/home/travis/build/stencila/js/src/extractFunctionSpecFromDoc.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 80,
+    "kind": "function",
+    "name": "extractFunctionSpecFromDoc",
+    "memberof": "src/extractFunctionSpecFromDoc.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/extractFunctionSpecFromDoc.js~extractFunctionSpecFromDoc",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/extractFunctionSpecFromDoc.js",
+    "importStyle": "extractFunctionSpecFromDoc",
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "params": [
+      {
+        "name": "doc",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "{\"name\": *, \"title\": *, \"description\": *, \"summary\": *, \"examples\": *, \"params\": *, \"_return\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 81,
+    "kind": "function",
+    "name": "_extractType",
+    "memberof": "src/extractFunctionSpecFromDoc.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/extractFunctionSpecFromDoc.js~_extractType",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/extractFunctionSpecFromDoc.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 80,
+    "undocument": true,
+    "params": [
+      {
+        "name": "tag",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 82,
+    "kind": "file",
+    "name": "src/findGlobals.js",
+    "content": "import { ancestor as ancestorWalk } from 'acorn/dist/walk'\n\n/*\n  Finds variables and function calls that are not declared locally.\n*/\nexport default function findGlobals (ast, options = {}) {\n  let ignore = options.ignore || new Set()\n\n  if (!(ast && typeof ast === 'object' && ast.type === 'Program')) {\n    throw new TypeError('Source must be either a string of JavaScript or an acorn AST')\n  }\n  let candidates = []\n  function _captureCandidate (node, parents) {\n    node.parents = parents.slice()\n    candidates.push(node)\n  }\n  // First pass: capture declared variables and record potential candidates\n  ancestorWalk(ast, {\n    'VariableDeclaration': function (node, parents) {\n      let parent = _getParentScope(node, parents)\n      // TODO: what does this?\n      node.declarations.forEach(function (declaration) {\n        _declarePattern(declaration.id, parent)\n      })\n    },\n    'FunctionDeclaration': function (node, parents) {\n      let parent = _getParentScope(node, parents, 1)\n      parent.locals[node.id.name] = true\n      _declareFunction(node)\n    },\n    'Function': _declareFunction,\n    'ClassDeclaration': function (node, parents) {\n      let parent = _getParentScope(node, parents, 1)\n      parent.locals[node.id.name] = true\n    },\n    'TryStatement': function (node) {\n      const handler = node.handler\n      if (handler === null) return\n      _initScope(handler)\n      handler.locals[handler.param.name] = true\n    },\n    'ImportDefaultSpecifier': _declareModuleSpecifier,\n    'ImportSpecifier': _declareModuleSpecifier,\n    'ImportNamespaceSpecifier': _declareModuleSpecifier,\n    // collect candidates\n    'VariablePattern': _captureCandidate,\n    'Identifier': _captureCandidate,\n    'ThisExpression': _captureCandidate,\n    'FunctionExpression': _captureCandidate\n  })\n\n  let globals = new Set()\n  candidates.forEach(node => {\n    if (_isGlobal(node, node.parents)) {\n      const name = node.type === 'ThisExpression' ? 'this' : node.name\n      // skip ignored globals, which is useful to ignore built-ins for instance\n      if (ignore.has(name)) return\n      globals.add(name)\n    }\n  })\n  return globals\n}\n\nconst BLOCK_DECLS = new Set(['let', 'const'])\nconst BLOCKS_WITH_DECLS = new Set(['ForInStatement'])\n\nfunction _getParentScope (node, parents, skipLast = 0) {\n  let scope\n  if (BLOCK_DECLS.has(node.kind)) {\n    scope = __getParentBlockScope(node, parents, skipLast)\n  } else {\n    scope = __getToplevelScope(node, parents, skipLast)\n  }\n  return _initScope(scope)\n}\n\nfunction __getParentBlockScope (node, parents, skipLast) {\n  for (let i = parents.length - 1 - skipLast; i >= 0; i--) {\n    const parent = parents[i]\n    if (BLOCKS_WITH_DECLS.has(parent.type)) {\n      return parent.body\n    } else if (_isBlockScope(parent)) {\n      return parent\n    }\n  }\n}\n\nfunction __getToplevelScope (node, parents, skipLast) {\n  for (let i = parents.length - 1 - skipLast; i >= 0; i--) {\n    const parent = parents[i]\n    if (_isScope(parent)) {\n      return parent\n    }\n  }\n}\n\nfunction _initScope (scope) {\n  if (!scope.locals) scope.locals = {}\n  return scope\n}\n\nfunction _isGlobal (node, parents) {\n  if (node.type === 'ThisExpression') {\n    for (let i = parents.length - 1; i >= 0; i--) {\n      let parent = parents[i]\n      if (_declaresThis(parent)) {\n        return false\n      }\n    }\n  } else {\n    let name = node.name\n    // TODO: what is this?\n    if (name === 'undefined') return\n    for (let i = parents.length - 1; i >= 0; i--) {\n      let parent = parents[i]\n      let scope\n      // TODO: do we want this? using a keyword for variables is not good practise\n      if (name === 'arguments' && _declaresArguments(parent)) {\n        return false\n      }\n      if (BLOCKS_WITH_DECLS.has(parent.type)) {\n        scope = parent.body\n      } else {\n        scope = parent\n      }\n      if (scope.locals && name in scope.locals) {\n        return false\n      }\n    }\n  }\n  return true\n}\n\nfunction _isScope (node) {\n  return node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration' || node.type === 'ArrowFunctionExpression' || node.type === 'Program'\n}\n\nfunction _isBlockScope (node) {\n  return node.type === 'BlockStatement' || _isScope(node)\n}\n\nfunction _declaresArguments (node) {\n  return node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration'\n}\n\nfunction _declaresThis (node) {\n  return node.type === 'FunctionExpression' || node.type === 'FunctionDeclaration'\n}\n\nfunction _declareFunction (node) {\n  let fn = node\n  fn.locals = fn.locals || {}\n  node.params.forEach(function (node) {\n    _declarePattern(node, fn)\n  })\n  if (node.id) {\n    fn.locals[node.id.name] = true\n  }\n}\n\nfunction _declarePattern (node, scope) {\n  switch (node.type) {\n    case 'Identifier':\n      scope.locals[node.name] = true\n      break\n    case 'ObjectPattern':\n      node.properties.forEach(function (node) {\n        _declarePattern(node.value, scope)\n      })\n      break\n    case 'ArrayPattern':\n      node.elements.forEach(function (node) {\n        if (node) _declarePattern(node, scope)\n      })\n      break\n    case 'RestElement':\n      _declarePattern(node.argument, scope)\n      break\n    case 'AssignmentPattern':\n      _declarePattern(node.left, scope)\n      break\n    // istanbul ignore next\n    default:\n      throw new Error('Unrecognized pattern type: ' + node.type)\n  }\n}\n\nfunction _declareModuleSpecifier (ast, node) {\n  ast.locals = ast.locals || {}\n  ast.locals[node.local.name] = true\n}\n",
+    "static": true,
+    "longname": "/home/travis/build/stencila/js/src/findGlobals.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 83,
+    "kind": "function",
+    "name": "findGlobals",
+    "memberof": "src/findGlobals.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/findGlobals.js~findGlobals",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/findGlobals.js",
+    "importStyle": "findGlobals",
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "params": [
+      {
+        "name": "ast",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "options",
+        "optional": true,
+        "types": [
+          "{}"
+        ],
+        "defaultRaw": {},
+        "defaultValue": "{}"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 84,
+    "kind": "variable",
+    "name": "BLOCK_DECLS",
+    "memberof": "src/findGlobals.js",
+    "static": true,
+    "longname": "src/findGlobals.js~BLOCK_DECLS",
+    "access": "public",
+    "export": false,
+    "importPath": "stencila-js/src/findGlobals.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 64,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 85,
+    "kind": "variable",
+    "name": "BLOCKS_WITH_DECLS",
+    "memberof": "src/findGlobals.js",
+    "static": true,
+    "longname": "src/findGlobals.js~BLOCKS_WITH_DECLS",
+    "access": "public",
+    "export": false,
+    "importPath": "stencila-js/src/findGlobals.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 65,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 86,
+    "kind": "function",
+    "name": "_getParentScope",
+    "memberof": "src/findGlobals.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/findGlobals.js~_getParentScope",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/findGlobals.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 67,
+    "undocument": true,
+    "params": [
+      {
+        "name": "node",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "parents",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "skipLast",
+        "optional": true,
+        "types": [
+          "number"
+        ],
+        "defaultRaw": 0,
+        "defaultValue": "0"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 87,
+    "kind": "function",
+    "name": "__getParentBlockScope",
+    "memberof": "src/findGlobals.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/findGlobals.js~__getParentBlockScope",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/findGlobals.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 77,
+    "undocument": true,
+    "params": [
+      {
+        "name": "node",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "parents",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "skipLast",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 88,
+    "kind": "function",
+    "name": "__getToplevelScope",
+    "memberof": "src/findGlobals.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/findGlobals.js~__getToplevelScope",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/findGlobals.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 88,
+    "undocument": true,
+    "params": [
+      {
+        "name": "node",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "parents",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "skipLast",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 89,
+    "kind": "function",
+    "name": "_initScope",
+    "memberof": "src/findGlobals.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/findGlobals.js~_initScope",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/findGlobals.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 97,
+    "undocument": true,
+    "params": [
+      {
+        "name": "scope",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 90,
+    "kind": "function",
+    "name": "_isGlobal",
+    "memberof": "src/findGlobals.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/findGlobals.js~_isGlobal",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/findGlobals.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 102,
+    "undocument": true,
+    "params": [
+      {
+        "name": "node",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "parents",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 91,
+    "kind": "function",
+    "name": "_isScope",
+    "memberof": "src/findGlobals.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/findGlobals.js~_isScope",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/findGlobals.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 134,
+    "undocument": true,
+    "params": [
+      {
+        "name": "node",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 92,
+    "kind": "function",
+    "name": "_isBlockScope",
+    "memberof": "src/findGlobals.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/findGlobals.js~_isBlockScope",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/findGlobals.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 138,
+    "undocument": true,
+    "params": [
+      {
+        "name": "node",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 93,
+    "kind": "function",
+    "name": "_declaresArguments",
+    "memberof": "src/findGlobals.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/findGlobals.js~_declaresArguments",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/findGlobals.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 142,
+    "undocument": true,
+    "params": [
+      {
+        "name": "node",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 94,
+    "kind": "function",
+    "name": "_declaresThis",
+    "memberof": "src/findGlobals.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/findGlobals.js~_declaresThis",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/findGlobals.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 146,
+    "undocument": true,
+    "params": [
+      {
+        "name": "node",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 95,
+    "kind": "function",
+    "name": "_declareFunction",
+    "memberof": "src/findGlobals.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/findGlobals.js~_declareFunction",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/findGlobals.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 150,
+    "undocument": true,
+    "params": [
+      {
+        "name": "node",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 96,
+    "kind": "function",
+    "name": "_declarePattern",
+    "memberof": "src/findGlobals.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/findGlobals.js~_declarePattern",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/findGlobals.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 161,
+    "undocument": true,
+    "params": [
+      {
+        "name": "node",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "scope",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 97,
+    "kind": "function",
+    "name": "_declareModuleSpecifier",
+    "memberof": "src/findGlobals.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/findGlobals.js~_declareModuleSpecifier",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/findGlobals.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 188,
+    "undocument": true,
+    "params": [
+      {
+        "name": "ast",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "node",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 98,
+    "kind": "file",
+    "name": "src/index.js",
+    "content": "export { default as compileJavascript } from './compileJavascript'\nexport { default as JavascriptContext } from './JavascriptContext'\nexport * from './types'\n",
+    "static": true,
+    "longname": "/home/travis/build/stencila/js/src/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 99,
+    "kind": "file",
+    "name": "src/packError.js",
+    "content": "export default function extractDetailsFromError (error) {\n  let line = 0\n  let column = 0\n  let message = error.message\n  if (error instanceof SyntaxError) {\n    message = 'Syntax error in Javascript: ' + message\n    if (error.loc) {\n      line = error.loc.line\n      column = error.loc.column\n    }\n  } else if (error.stack) {\n    // Parse the error stack to get message, line and columns numbers\n    let lines = error.stack.split('\\n')\n    let match = lines[1].match(/<anonymous>:(\\d+):(\\d+)/)\n    if (match) {\n      line = parseInt(match[1], 10) - 2\n      column = parseInt(match[2], 10)\n    }\n    message = lines[0] || error.message\n  }\n  return {\n    type: 'error',\n    message,\n    line,\n    column\n  }\n}\n",
+    "static": true,
+    "longname": "/home/travis/build/stencila/js/src/packError.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 100,
+    "kind": "function",
+    "name": "extractDetailsFromError",
+    "memberof": "src/packError.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/packError.js~extractDetailsFromError",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/packError.js",
+    "importStyle": "extractDetailsFromError",
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "params": [
+      {
+        "name": "error",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "{\"type\": string, \"message\": *, \"line\": *, \"column\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 101,
+    "kind": "file",
+    "name": "src/parseValue.js",
+    "content": "import { isString } from 'substance'\n\nconst TICK = '\\''.charCodeAt(0)\nconst QUOTES = '\"'.charCodeAt(0)\nconst BRACKET = '['.charCodeAt(0)\nconst BRACE = '{'.charCodeAt(0)\nconst STR_TICK_RE = /^['](.*)[']$/\nconst STR_QUOTES_RE = /^[\"](.*)[\"]$/\n\nexport default function parseValue (text) {\n  if (!isString(text)) return text\n  text = text.trim()\n  // detect boolean\n  if (text === 'false') {\n    return false\n  }\n  if (text === 'true') {\n    return true\n  }\n  // detect numbers\n  if (!isNaN(text)) {\n    let _int = Number.parseInt(text, 10)\n    if (_int == text) { // eslint-disable-line\n      return _int\n    } else {\n      return Number.parseFloat(text)\n    }\n  }\n  if (text.charCodeAt(0) === TICK) {\n    let m = STR_TICK_RE.exec(text)\n    if (m) {\n      return String(m[1])\n    } else {\n      throw new Error('Illegal format')\n    }\n  }\n  if (text.charCodeAt(0) === QUOTES) {\n    let m = STR_QUOTES_RE.exec(text)\n    if (m) {\n      return String(m[1])\n    } else {\n      throw new Error('Illegal format')\n    }\n  }\n  // ATTENTION: for arrays and object we support only JSON notation for now\n  if (text.charCodeAt(0) === BRACKET || text.charCodeAt(0) === BRACE) {\n    return JSON.parse(text)\n  }\n\n  throw new Error('Illegal format')\n}\n",
+    "static": true,
+    "longname": "/home/travis/build/stencila/js/src/parseValue.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 102,
+    "kind": "variable",
+    "name": "TICK",
+    "memberof": "src/parseValue.js",
+    "static": true,
+    "longname": "src/parseValue.js~TICK",
+    "access": "public",
+    "export": false,
+    "importPath": "stencila-js/src/parseValue.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 103,
+    "kind": "variable",
+    "name": "QUOTES",
+    "memberof": "src/parseValue.js",
+    "static": true,
+    "longname": "src/parseValue.js~QUOTES",
+    "access": "public",
+    "export": false,
+    "importPath": "stencila-js/src/parseValue.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 104,
+    "kind": "variable",
+    "name": "BRACKET",
+    "memberof": "src/parseValue.js",
+    "static": true,
+    "longname": "src/parseValue.js~BRACKET",
+    "access": "public",
+    "export": false,
+    "importPath": "stencila-js/src/parseValue.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 105,
+    "kind": "variable",
+    "name": "BRACE",
+    "memberof": "src/parseValue.js",
+    "static": true,
+    "longname": "src/parseValue.js~BRACE",
+    "access": "public",
+    "export": false,
+    "importPath": "stencila-js/src/parseValue.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 106,
+    "kind": "variable",
+    "name": "STR_TICK_RE",
+    "memberof": "src/parseValue.js",
+    "static": true,
+    "longname": "src/parseValue.js~STR_TICK_RE",
+    "access": "public",
+    "export": false,
+    "importPath": "stencila-js/src/parseValue.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "type": {
+      "types": [
+        "undefined"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 107,
+    "kind": "variable",
+    "name": "STR_QUOTES_RE",
+    "memberof": "src/parseValue.js",
+    "static": true,
+    "longname": "src/parseValue.js~STR_QUOTES_RE",
+    "access": "public",
+    "export": false,
+    "importPath": "stencila-js/src/parseValue.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "undefined"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 108,
+    "kind": "function",
+    "name": "parseValue",
+    "memberof": "src/parseValue.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/parseValue.js~parseValue",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/parseValue.js",
+    "importStyle": "parseValue",
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "params": [
+      {
+        "name": "text",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 109,
+    "kind": "file",
+    "name": "src/types.js",
+    "content": "// TODO: this should go into its own repo: `stencila/types`\nimport { isNil } from 'substance'\n\n// Parent of each type\nconst parentTypes = {\n  'any': null,\n  'null': 'any',\n  'boolean': 'any',\n  'number': 'any',\n  'integer': 'number',\n  'string': 'any',\n  'object': 'any',\n  'array': 'any',\n  'array[boolean]': 'array',\n  'array[number]': 'array',\n  'array[integer]': 'array[number]',\n  'array[string]': 'array',\n  'array[object]': 'array',\n  'table': 'any'\n}\n\n// Children of each type\nconst childrenTypes = {}\nfor (let type of Object.keys(parentTypes)) {\n  if (!childrenTypes[type]) childrenTypes[type] = []\n  let base = parentTypes[type]\n  if (!base) continue\n  if (childrenTypes[base]) childrenTypes[base].push(type)\n  else childrenTypes[base] = [type]\n}\n\n// Descendants (children, grandchildren etc) of each type\nconst descendantTypes = {}\nfor (let type of Object.keys(parentTypes)) {\n  if (!descendantTypes[type]) descendantTypes[type] = []\n  let parent = parentTypes[type]\n  while (parent) {\n    if (descendantTypes[parent]) descendantTypes[parent].push(type)\n    else descendantTypes[parent] = [type]\n    parent = parentTypes[parent]\n  }\n}\n\nexport { parentTypes, childrenTypes, descendantTypes }\n\nexport function coercedArrayType (arr) {\n  let valType = arr.reduce(_mostSpecificType, undefined)\n  if (valType === 'any') {\n    return 'array'\n  } else {\n    return `array[${valType}]`\n  }\n}\n\n/**\n * Get the type code for a value\n *\n * @memberof value\n * @param {*} value - A JavaScript value\n * @return {string} - Type code for value\n */\nexport function type (value) {\n  let type = typeof value\n\n  if (isNil(value) === null) {\n    return 'null'\n  } else if (type === 'boolean') {\n    return 'boolean'\n  } else if (type === 'number') {\n    let isInteger = false\n    if (value.isInteger) isInteger = value.isInteger()\n    else isInteger = (value % 1) === 0\n    return isInteger ? 'integer' : 'number'\n  } else if (type === 'string') {\n    return 'string'\n  } else if (type === 'object') {\n    if (value.constructor === Array) {\n      return 'array'\n    }\n    if (value.type) return value.type\n    else return 'object'\n  } else {\n    return 'unknown'\n  }\n}\n\n/*\n  A helper to get a coerced array value from a given array of values.\n*/\nexport function coerceArray (arr) {\n  return {\n    type: coercedArrayType(arr),\n    data: arr.map(v => {\n      if (v) {\n        return v.data\n      } else {\n        return undefined\n      }\n    })\n  }\n}\n\nfunction _mostSpecificType (type, next) {\n  if (!next) return 'any'\n  let nextType = next.type\n  if (!type) return nextType\n  if (type === nextType) {\n    return type\n  }\n  switch (type) {\n    case 'number': {\n      if (nextType === 'integer') {\n        return 'number'\n      }\n      break\n    }\n    case 'integer': {\n      if (nextType === 'number') {\n        return 'number'\n      }\n      break\n    }\n    default:\n      //\n  }\n  return 'any'\n}\n\nexport function pack (value, opts = {}) {\n  if (isNil(value)) {\n    return { type: 'null', data: null }\n  }\n  if (typeof value === 'function') {\n    let data = { name: value.name }\n    if (opts.context) data.context = opts.context.id\n    if (opts.cell) data.id = opts.cell.id\n    return {\n      type: 'function',\n      data\n    }\n  }\n  if (value.type === 'image') {\n    return { type: 'image', src: value.src }\n  } else {\n    let _type = value.type || type(value)\n    return { type: _type, data: value }\n  }\n}\n\nexport function unpack (pkg) {\n  if (isNil(pkg)) return undefined\n  return pkg.data\n}\n",
+    "static": true,
+    "longname": "/home/travis/build/stencila/js/src/types.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 110,
+    "kind": "function",
+    "name": "coercedArrayType",
+    "memberof": "src/types.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/types.js~coercedArrayType",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/types.js",
+    "importStyle": "{coercedArrayType}",
+    "description": null,
+    "lineNumber": 46,
+    "undocument": true,
+    "params": [
+      {
+        "name": "arr",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 111,
+    "kind": "function",
+    "name": "type",
+    "memberof": "src/types.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/types.js~type",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/types.js",
+    "importStyle": "{type}",
+    "description": "Get the type code for a value",
+    "lineNumber": 62,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "A JavaScript value"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "Type code for value"
+    }
+  },
+  {
+    "__docId__": 112,
+    "kind": "function",
+    "name": "coerceArray",
+    "memberof": "src/types.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/types.js~coerceArray",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/types.js",
+    "importStyle": "{coerceArray}",
+    "description": null,
+    "lineNumber": 90,
+    "undocument": true,
+    "params": [
+      {
+        "name": "arr",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "{\"type\": *, \"data\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 113,
+    "kind": "function",
+    "name": "_mostSpecificType",
+    "memberof": "src/types.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/types.js~_mostSpecificType",
+    "access": "private",
+    "export": false,
+    "importPath": "stencila-js/src/types.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 103,
+    "undocument": true,
+    "params": [
+      {
+        "name": "type",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "next",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 114,
+    "kind": "function",
+    "name": "pack",
+    "memberof": "src/types.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/types.js~pack",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/types.js",
+    "importStyle": "{pack}",
+    "description": null,
+    "lineNumber": 129,
+    "undocument": true,
+    "params": [
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "opts",
+        "optional": true,
+        "types": [
+          "{}"
+        ],
+        "defaultRaw": {},
+        "defaultValue": "{}"
+      }
+    ],
+    "return": {
+      "types": [
+        "{\"type\": *, \"data\": *}"
+      ]
+    }
+  },
+  {
+    "__docId__": 115,
+    "kind": "function",
+    "name": "unpack",
+    "memberof": "src/types.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/types.js~unpack",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/types.js",
+    "importStyle": "{unpack}",
+    "description": null,
+    "lineNumber": 150,
+    "undocument": true,
+    "params": [
+      {
+        "name": "pkg",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 116,
+    "kind": "variable",
+    "name": "parentTypes",
+    "memberof": "src/types.js",
+    "static": true,
+    "longname": "src/types.js~parentTypes",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/types.js",
+    "importStyle": "{parentTypes}",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{\"any\": *, \"null\": string, \"boolean\": string, \"number\": string, \"integer\": string, \"string\": string, \"object\": string, \"array\": string, \"array[boolean]\": string, \"array[number]\": string, \"array[integer]\": string, \"array[string]\": string, \"array[object]\": string, \"table\": string}"
+      ]
+    }
+  },
+  {
+    "__docId__": 117,
+    "kind": "variable",
+    "name": "childrenTypes",
+    "memberof": "src/types.js",
+    "static": true,
+    "longname": "src/types.js~childrenTypes",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/types.js",
+    "importStyle": "{childrenTypes}",
+    "description": null,
+    "lineNumber": 23,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{}"
+      ]
+    }
+  },
+  {
+    "__docId__": 118,
+    "kind": "variable",
+    "name": "descendantTypes",
+    "memberof": "src/types.js",
+    "static": true,
+    "longname": "src/types.js~descendantTypes",
+    "access": "public",
+    "export": true,
+    "importPath": "stencila-js/src/types.js",
+    "importStyle": "{descendantTypes}",
+    "description": null,
+    "lineNumber": 33,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{}"
+      ]
+    }
+  },
+  {
+    "kind": "index",
+    "content": "## `stencila/js` : Stencila for Javascript\n\n[![Docs](https://img.shields.io/badge/docs-API-blue.svg)](https://stencila.github.io/js/)\n[![NPM](http://img.shields.io/npm/v/stencila-js.svg?style=flat)](https://www.npmjs.com/package/stencila-js)\n[![Build status](https://travis-ci.org/stencila/js.svg?branch=master)](https://travis-ci.org/stencila/js)\n[![Code coverage](https://codecov.io/gh/stencila/js/branch/master/graph/badge.svg)](https://codecov.io/gh/stencila/js)\n[![Dependency status](https://david-dm.org/stencila/js.svg)](https://david-dm.org/stencila/js)\n[![Chat](https://badges.gitter.im/stencila/stencila.svg)](https://gitter.im/stencila/stencila)\n\nProvides a `JavascriptContext` for executing Javascript code from within Stencila documents.\n\n### Install\n\n```bash\nnpm install stencila-js\n```\n\nAPI documentation is available at https://stencila.github.io/js/.\n\n### Develop\n\n```bash\ngit clone git@github.com:stencila/js.git\ncd js\nnpm install\nnpm run lint\nnpm test\nnpm run cover\n```\n\nTo run tests in the browser:\n\n```bash\nnpm run test-browser \n```\n\nThere's also a `Makefile` if you prefer to run tasks that way e.g.\n\n```bash\nmake lint cover test-browser\n```\n\n### See also\n\nThe `NodeContext` in the [`stencila/node`](https://github.com/stencila/node) repository is derived from the `JavascriptContext` in this repo.\n",
+    "longname": "/home/travis/build/stencila/js/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"stencila-js\",\n  \"version\": \"0.26.1\",\n  \"description\": \"Stencila for Javascript\",\n  \"jsxnext:main\": \"index.js\",\n  \"main\": \"dist/stencila-js.cjs.js\",\n  \"scripts\": {\n    \"prepack\": \"npm install && npm run build && npm run docs\",\n    \"lint\": \"standard src/**/*.js test/**/*.js\",\n    \"test\": \"node --require esm test | tap-spec\",\n    \"test-browser\": \"node make test:browser\",\n    \"cover\": \"nyc --require esm --reporter=lcov --reporter=text node test\",\n    \"build\": \"node make build\",\n    \"docs\": \"esdoc\",\n    \"clean\": \"rimraf .nyc_output coverage dist docs tmp\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/stencila/js.git\"\n  },\n  \"keywords\": [\n    \"data\",\n    \"documents\",\n    \"sheets\",\n    \"contexts\",\n    \"sessions\",\n    \"reproducibility\",\n    \"science\"\n  ],\n  \"author\": \"\",\n  \"license\": \"Apache-2.0\",\n  \"bugs\": {\n    \"url\": \"https://github.com/stencila/js/issues\"\n  },\n  \"homepage\": \"https://github.com/stencila/js#readme\",\n  \"dependencies\": {\n    \"acorn\": \"^5.5.3\",\n    \"astring\": \"^1.3.0\",\n    \"doctrine\": \"^2.1.0\"\n  },\n  \"devDependencies\": {\n    \"browserify\": \"^16.2.2\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"esm\": \"3.0.47\",\n    \"lodash-es\": \"^4.17.10\",\n    \"nyc\": \"11.8.0\",\n    \"rimraf\": \"^2.6.2\",\n    \"rollup\": \"^0.58.2\",\n    \"rollup-plugin-commonjs\": \"^9.1.3\",\n    \"rollup-plugin-node-resolve\": \"^3.3.0\",\n    \"rollup-plugin-uglify\": \"^3.0.0\",\n    \"standard\": \"^11.0.1\",\n    \"substance\": \"1.0.0-preview.65\",\n    \"substance-bundler\": \"^0.25.3\",\n    \"substance-test\": \"0.12.2\",\n    \"tap-spec\": \"^4.1.1\",\n    \"tape\": \"^4.9.0\",\n    \"uglify-es\": \"^3.3.9\"\n  },\n  \"esdoc\": {\n    \"source\": \"./src\",\n    \"destination\": \"./docs\",\n    \"plugins\": [\n      {\n        \"name\": \"esdoc-standard-plugin\"\n      }\n    ]\n  },\n  \"nyc\": {\n    \"include\": [\n      \"src/*.js\"\n    ]\n  }\n}\n",
+    "longname": "/home/travis/build/stencila/js/package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]

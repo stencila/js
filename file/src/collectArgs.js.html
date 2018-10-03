@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/collectArgs.js | stencila-js</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Stencila for Javascript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="stencila-js"><meta property="twitter:description" content="Stencila for Javascript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/stencila/js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/JavascriptContext.js~JavascriptContext.html">JavascriptContext</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-collectArgs">collectArgs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-compileFunction">compileFunction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-compileJavascript">compileJavascript</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extractFunctionSpecFromDoc">extractFunctionSpecFromDoc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findGlobals">findGlobals</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extractDetailsFromError">extractDetailsFromError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parseValue">parseValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-coerceArray">coerceArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-coercedArrayType">coercedArrayType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pack">pack</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-type">type</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-unpack">unpack</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-JSGLOBALS">JSGLOBALS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-childrenTypes">childrenTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-descendantTypes">descendantTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-parentTypes">parentTypes</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/collectArgs.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+* A helper method interpreting a given function definition
+* following the function spec from TODO:link-to-func-specification
+*/
+export default async function collectArgs (func, call, hooks) {
+  // HACK: just use the first method
+  // TODO: why would there be multiple ones?
+  // FIXME: this might be very bad, because Object does
+  // not have a guaranteed order
+  const method = Object.values(func.methods)[0]
+  const unpack = hooks.unpack
+  let args = []
+  let namedArgs
+
+  // Using `method.params` specification, map the call&apos;s arguments onto the method&apos;s parameters
+  let argsIndex = 0
+  let argsUsed = 0
+  let namedArgsUsed = []
+  if (method.params) {
+    for (let param of method.params) {
+      if (param.repeats) {
+        // Put the remaining arguments into an array
+        let remaining = []
+        for (; argsIndex &lt; call.args.length; argsIndex++) {
+          remaining.push(await unpack(call.args[argsIndex]))
+          argsUsed++
+        }
+        args.push(remaining)
+        break
+      } else if (param.extends) {
+        // Put the remaining named arguments into an object
+        if (call.namedArgs) {
+          namedArgs = {}
+          for (let name of Object.keys(call.namedArgs)) {
+            if (namedArgsUsed.indexOf(name) &lt; 0) {
+              namedArgs[name] = await unpack(call.namedArgs[name])
+              namedArgsUsed.push(param.name)
+            }
+          }
+        }
+        break
+      } else {
+        // Get the argument for the parameter either by name or by index
+        let arg
+        if (call.namedArgs) {
+          arg = call.namedArgs[param.name]
+          if (arg) namedArgsUsed.push(param.name)
+        }
+        if (!arg &amp;&amp; call.args) {
+          arg = call.args[argsIndex]
+          if (arg) argsUsed++
+        }
+        if (!arg &amp;&amp; !param.default) {
+          let msg = `Function &apos;${func.name}&apos; requires parameter &apos;${param.name}&apos;`
+          throw new Error(msg)
+        }
+        if (arg) args.push(await unpack(arg))
+        else args.push(undefined)
+      }
+      argsIndex++
+    }
+  }
+  // Check that there are no extra, unused arguments in call
+  if (call.args &amp;&amp; argsUsed &lt; call.args.length) {
+    const extra = call.args.length - argsUsed
+    throw new Error(`Function was supplied ${extra} extra arguments`)
+  }
+  if (call.namedArgs &amp;&amp; namedArgsUsed.length &lt; Object.keys(call.namedArgs).length) {
+    const extra = Object.keys(call.namedArgs).filter((arg) =&gt; namedArgsUsed.indexOf(arg) &lt; 0)
+      .map((arg) =&gt; `&quot;${arg}&quot;`)
+      .join(&apos;, &apos;)
+    throw new Error(`Function was supplied extra named arguments ${extra}`)
+  }
+  return { args, namedArgs }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

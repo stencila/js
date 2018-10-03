@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/findGlobals.js | stencila-js</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Stencila for Javascript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="stencila-js"><meta property="twitter:description" content="Stencila for Javascript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/stencila/js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/JavascriptContext.js~JavascriptContext.html">JavascriptContext</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-collectArgs">collectArgs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-compileFunction">compileFunction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-compileJavascript">compileJavascript</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extractFunctionSpecFromDoc">extractFunctionSpecFromDoc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findGlobals">findGlobals</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extractDetailsFromError">extractDetailsFromError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parseValue">parseValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-coerceArray">coerceArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-coercedArrayType">coercedArrayType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pack">pack</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-type">type</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-unpack">unpack</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-JSGLOBALS">JSGLOBALS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-childrenTypes">childrenTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-descendantTypes">descendantTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-parentTypes">parentTypes</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/findGlobals.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { ancestor as ancestorWalk } from &apos;acorn/dist/walk&apos;
+
+/*
+  Finds variables and function calls that are not declared locally.
+*/
+export default function findGlobals (ast, options = {}) {
+  let ignore = options.ignore || new Set()
+
+  if (!(ast &amp;&amp; typeof ast === &apos;object&apos; &amp;&amp; ast.type === &apos;Program&apos;)) {
+    throw new TypeError(&apos;Source must be either a string of JavaScript or an acorn AST&apos;)
+  }
+  let candidates = []
+  function _captureCandidate (node, parents) {
+    node.parents = parents.slice()
+    candidates.push(node)
+  }
+  // First pass: capture declared variables and record potential candidates
+  ancestorWalk(ast, {
+    &apos;VariableDeclaration&apos;: function (node, parents) {
+      let parent = _getParentScope(node, parents)
+      // TODO: what does this?
+      node.declarations.forEach(function (declaration) {
+        _declarePattern(declaration.id, parent)
+      })
+    },
+    &apos;FunctionDeclaration&apos;: function (node, parents) {
+      let parent = _getParentScope(node, parents, 1)
+      parent.locals[node.id.name] = true
+      _declareFunction(node)
+    },
+    &apos;Function&apos;: _declareFunction,
+    &apos;ClassDeclaration&apos;: function (node, parents) {
+      let parent = _getParentScope(node, parents, 1)
+      parent.locals[node.id.name] = true
+    },
+    &apos;TryStatement&apos;: function (node) {
+      const handler = node.handler
+      if (handler === null) return
+      _initScope(handler)
+      handler.locals[handler.param.name] = true
+    },
+    &apos;ImportDefaultSpecifier&apos;: _declareModuleSpecifier,
+    &apos;ImportSpecifier&apos;: _declareModuleSpecifier,
+    &apos;ImportNamespaceSpecifier&apos;: _declareModuleSpecifier,
+    // collect candidates
+    &apos;VariablePattern&apos;: _captureCandidate,
+    &apos;Identifier&apos;: _captureCandidate,
+    &apos;ThisExpression&apos;: _captureCandidate,
+    &apos;FunctionExpression&apos;: _captureCandidate
+  })
+
+  let globals = new Set()
+  candidates.forEach(node =&gt; {
+    if (_isGlobal(node, node.parents)) {
+      const name = node.type === &apos;ThisExpression&apos; ? &apos;this&apos; : node.name
+      // skip ignored globals, which is useful to ignore built-ins for instance
+      if (ignore.has(name)) return
+      globals.add(name)
+    }
+  })
+  return globals
+}
+
+const BLOCK_DECLS = new Set([&apos;let&apos;, &apos;const&apos;])
+const BLOCKS_WITH_DECLS = new Set([&apos;ForInStatement&apos;])
+
+function _getParentScope (node, parents, skipLast = 0) {
+  let scope
+  if (BLOCK_DECLS.has(node.kind)) {
+    scope = __getParentBlockScope(node, parents, skipLast)
+  } else {
+    scope = __getToplevelScope(node, parents, skipLast)
+  }
+  return _initScope(scope)
+}
+
+function __getParentBlockScope (node, parents, skipLast) {
+  for (let i = parents.length - 1 - skipLast; i &gt;= 0; i--) {
+    const parent = parents[i]
+    if (BLOCKS_WITH_DECLS.has(parent.type)) {
+      return parent.body
+    } else if (_isBlockScope(parent)) {
+      return parent
+    }
+  }
+}
+
+function __getToplevelScope (node, parents, skipLast) {
+  for (let i = parents.length - 1 - skipLast; i &gt;= 0; i--) {
+    const parent = parents[i]
+    if (_isScope(parent)) {
+      return parent
+    }
+  }
+}
+
+function _initScope (scope) {
+  if (!scope.locals) scope.locals = {}
+  return scope
+}
+
+function _isGlobal (node, parents) {
+  if (node.type === &apos;ThisExpression&apos;) {
+    for (let i = parents.length - 1; i &gt;= 0; i--) {
+      let parent = parents[i]
+      if (_declaresThis(parent)) {
+        return false
+      }
+    }
+  } else {
+    let name = node.name
+    // TODO: what is this?
+    if (name === &apos;undefined&apos;) return
+    for (let i = parents.length - 1; i &gt;= 0; i--) {
+      let parent = parents[i]
+      let scope
+      // TODO: do we want this? using a keyword for variables is not good practise
+      if (name === &apos;arguments&apos; &amp;&amp; _declaresArguments(parent)) {
+        return false
+      }
+      if (BLOCKS_WITH_DECLS.has(parent.type)) {
+        scope = parent.body
+      } else {
+        scope = parent
+      }
+      if (scope.locals &amp;&amp; name in scope.locals) {
+        return false
+      }
+    }
+  }
+  return true
+}
+
+function _isScope (node) {
+  return node.type === &apos;FunctionExpression&apos; || node.type === &apos;FunctionDeclaration&apos; || node.type === &apos;ArrowFunctionExpression&apos; || node.type === &apos;Program&apos;
+}
+
+function _isBlockScope (node) {
+  return node.type === &apos;BlockStatement&apos; || _isScope(node)
+}
+
+function _declaresArguments (node) {
+  return node.type === &apos;FunctionExpression&apos; || node.type === &apos;FunctionDeclaration&apos;
+}
+
+function _declaresThis (node) {
+  return node.type === &apos;FunctionExpression&apos; || node.type === &apos;FunctionDeclaration&apos;
+}
+
+function _declareFunction (node) {
+  let fn = node
+  fn.locals = fn.locals || {}
+  node.params.forEach(function (node) {
+    _declarePattern(node, fn)
+  })
+  if (node.id) {
+    fn.locals[node.id.name] = true
+  }
+}
+
+function _declarePattern (node, scope) {
+  switch (node.type) {
+    case &apos;Identifier&apos;:
+      scope.locals[node.name] = true
+      break
+    case &apos;ObjectPattern&apos;:
+      node.properties.forEach(function (node) {
+        _declarePattern(node.value, scope)
+      })
+      break
+    case &apos;ArrayPattern&apos;:
+      node.elements.forEach(function (node) {
+        if (node) _declarePattern(node, scope)
+      })
+      break
+    case &apos;RestElement&apos;:
+      _declarePattern(node.argument, scope)
+      break
+    case &apos;AssignmentPattern&apos;:
+      _declarePattern(node.left, scope)
+      break
+    // istanbul ignore next
+    default:
+      throw new Error(&apos;Unrecognized pattern type: &apos; + node.type)
+  }
+}
+
+function _declareModuleSpecifier (ast, node) {
+  ast.locals = ast.locals || {}
+  ast.locals[node.local.name] = true
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

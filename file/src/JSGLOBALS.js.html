@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/JSGLOBALS.js | stencila-js</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Stencila for Javascript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="stencila-js"><meta property="twitter:description" content="Stencila for Javascript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/stencila/js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/JavascriptContext.js~JavascriptContext.html">JavascriptContext</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-collectArgs">collectArgs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-compileFunction">compileFunction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-compileJavascript">compileJavascript</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extractFunctionSpecFromDoc">extractFunctionSpecFromDoc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findGlobals">findGlobals</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extractDetailsFromError">extractDetailsFromError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parseValue">parseValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-coerceArray">coerceArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-coercedArrayType">coercedArrayType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pack">pack</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-type">type</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-unpack">unpack</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-JSGLOBALS">JSGLOBALS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-childrenTypes">childrenTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-descendantTypes">descendantTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-parentTypes">parentTypes</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/JSGLOBALS.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * Global variable names that should be ignored when determining
+ * cell inputs with the `compile()` method
+ *
+ * @type {Array}
+ */
+const JSGLOBALS = [
+  // A list of ES6 globals obtained using: Object.keys(require(&apos;globals&apos;).es6)
+  &apos;Array&apos;, &apos;ArrayBuffer&apos;, &apos;Boolean&apos;, &apos;constructor&apos;, &apos;DataView&apos;, &apos;Date&apos;, &apos;decodeURI&apos;, &apos;decodeURIComponent&apos;,
+  &apos;encodeURI&apos;, &apos;encodeURIComponent&apos;, &apos;Error&apos;, &apos;escape&apos;, &apos;eval&apos;, &apos;EvalError&apos;, &apos;Float32Array&apos;, &apos;Float64Array&apos;,
+  &apos;Function&apos;, &apos;hasOwnProperty&apos;, &apos;Infinity&apos;, &apos;Int16Array&apos;, &apos;Int32Array&apos;, &apos;Int8Array&apos;, &apos;isFinite&apos;, &apos;isNaN&apos;,
+  &apos;isPrototypeOf&apos;, &apos;JSON&apos;, &apos;Map&apos;, &apos;Math&apos;, &apos;NaN&apos;, &apos;Number&apos;, &apos;Object&apos;, &apos;parseFloat&apos;, &apos;parseInt&apos;, &apos;Promise&apos;,
+  &apos;propertyIsEnumerable&apos;, &apos;Proxy&apos;, &apos;RangeError&apos;, &apos;ReferenceError&apos;, &apos;Reflect&apos;, &apos;RegExp&apos;, &apos;Set&apos;, &apos;String&apos;,
+  &apos;Symbol&apos;, &apos;SyntaxError&apos;, &apos;System&apos;, &apos;toLocaleString&apos;, &apos;toString&apos;, &apos;TypeError&apos;, &apos;Uint16Array&apos;, &apos;Uint32Array&apos;,
+  &apos;Uint8Array&apos;, &apos;Uint8ClampedArray&apos;, &apos;undefined&apos;, &apos;unescape&apos;, &apos;URIError&apos;, &apos;valueOf&apos;, &apos;WeakMap&apos;, &apos;WeakSet&apos;,
+  // A list of Node.js globals obtained using: Object.keys(require(&apos;globals&apos;).node)
+  &apos;__dirname&apos;, &apos;__filename&apos;, &apos;arguments&apos;, &apos;Buffer&apos;, &apos;clearImmediate&apos;, &apos;clearInterval&apos;, &apos;clearTimeout&apos;, &apos;console&apos;,
+  &apos;exports&apos;, &apos;GLOBAL&apos;, &apos;global&apos;, &apos;Intl&apos;, &apos;module&apos;, &apos;process&apos;, &apos;require&apos;, &apos;root&apos;, &apos;setImmediate&apos;, &apos;setInterval&apos;, &apos;setTimeout&apos;
+]
+
+export default JSGLOBALS
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

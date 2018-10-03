@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/compileFunction.js | stencila-js</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Stencila for Javascript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="stencila-js"><meta property="twitter:description" content="Stencila for Javascript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/stencila/js"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/JavascriptContext.js~JavascriptContext.html">JavascriptContext</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-collectArgs">collectArgs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-compileFunction">compileFunction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-compileJavascript">compileJavascript</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extractFunctionSpecFromDoc">extractFunctionSpecFromDoc</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-findGlobals">findGlobals</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extractDetailsFromError">extractDetailsFromError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parseValue">parseValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-coerceArray">coerceArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-coercedArrayType">coercedArrayType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pack">pack</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-type">type</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-unpack">unpack</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-JSGLOBALS">JSGLOBALS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-childrenTypes">childrenTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-descendantTypes">descendantTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-parentTypes">parentTypes</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/compileFunction.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import parseValue from &apos;./parseValue&apos;
+import extractFunctionSpecFromDoc from &apos;./extractFunctionSpecFromDoc&apos;
+
+// TODO: bring back features from the original implementation.
+export default function compileFunction (name, decl, code, commentBlocks) {
+  let params = []
+  for (let node of decl.params) {
+    let param = {}
+    switch (node.type) {
+      case &apos;Identifier&apos;:
+        // TODO: what is an &apos;extensible&apos; parameter?
+        if (node.name.substring(0, 3) === &apos;___&apos;) {
+          param.name = node.name.substring(3)
+          param.extends = true
+        } else {
+          param.name = node.name
+        }
+        break
+      case &apos;RestElement&apos;:
+        param.name = node.argument.name
+        param.repeats = true
+        break
+      case &apos;AssignmentPattern&apos;:
+        param.name = node.left.name
+        param.default = parseValue(code.substring(node.right.start, node.right.end))
+        break
+      default:
+        throw new Error(`Unhandled parameter node type &quot;${node.type}&quot;`)
+    }
+    params.push(param)
+  }
+
+  // TODO: extract this from the comment block if available
+  let description, title, summary, examples, _return
+
+  let commentBlock = getDocForDecl(code, decl, commentBlocks)
+  if (commentBlock) {
+    let details = extractFunctionSpecFromDoc(commentBlock.text)
+    if (details.name &amp;&amp; name !== details.name) {
+      console.error(&apos;@name does not match function name&apos;)
+    }
+    if (details.description) description = details.description
+    if (details.title) title = details.title
+    if (details.summary) summary = details.summary
+    if (details.params) {
+      let paramsMap = {}
+      params.forEach(p =&gt; {
+        paramsMap[p.name] = p
+      })
+      for (let [_name, _p] of details.params) {
+        let p = paramsMap[_name]
+        if (!p) {
+          console.error(&apos;@param given for a parameter that is not contained in the signature&apos;)
+          continue
+        }
+        Object.assign(p, _p)
+      }
+    }
+    _return = details._return
+    examples = details.examples
+  }
+
+  let method = {}
+  let signature = name + &apos;(&apos; + params.map(param =&gt; {
+    return param.name + (param.type ? `: ${param.type}` : &apos;&apos;)
+  }).join(&apos;, &apos;) + &apos;)&apos;
+  if (_return) signature += `: ${_return.type}`
+  method.signature = signature
+  method.params = params
+  if (_return) method.return = _return
+  if (examples) method.examples = examples
+
+  let spec = {
+    type: &apos;function&apos;,
+    code,
+    name
+  }
+  if (title) spec.title = title
+  if (summary) spec.summary = summary
+  if (description) spec.description = description
+  // TODO: how would there be multiple method specs?
+  let methods = {}
+  methods[signature] = method
+  spec.methods = methods
+
+  return spec
+}
+
+// only a comment block directly in front of the function decl is considered
+function getDocForDecl (code, decl, commentBlocks) {
+  for (let i = 0; i &lt; commentBlocks.length; i++) {
+    let block = commentBlocks[i]
+    // we can stop early as the blocks are sorted
+    if (block.end &gt; decl.start) return
+    // only whitespace is allowed between the comment block and the declaration
+    if (/^\s*$/.exec(code.slice(block.end, decl.start))) {
+      return block
+    }
+  }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

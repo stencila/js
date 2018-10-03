@@ -1,0 +1,120 @@
+{
+  "coverage": "8.33%",
+  "expectCount": 60,
+  "actualCount": 5,
+  "files": {
+    "src/JSGLOBALS.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/JavascriptContext.js": {
+      "expectCount": 16,
+      "actualCount": 2,
+      "undocumentLines": [
+        11,
+        12,
+        16,
+        27,
+        30,
+        35,
+        39,
+        44,
+        48,
+        53,
+        135,
+        150,
+        180,
+        187
+      ]
+    },
+    "src/collectArgs.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/compileFunction.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        90
+      ]
+    },
+    "src/compileJavascript.js": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        8,
+        10,
+        88,
+        101,
+        105,
+        117
+      ]
+    },
+    "src/extractFunctionSpecFromDoc.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        80
+      ]
+    },
+    "src/findGlobals.js": {
+      "expectCount": 15,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        64,
+        65,
+        67,
+        77,
+        88,
+        97,
+        102,
+        134,
+        138,
+        142,
+        146,
+        150,
+        161,
+        188
+      ]
+    },
+    "src/packError.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "src/parseValue.js": {
+      "expectCount": 7,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10
+      ]
+    },
+    "src/types.js": {
+      "expectCount": 9,
+      "actualCount": 1,
+      "undocumentLines": [
+        46,
+        90,
+        103,
+        129,
+        150,
+        5,
+        23,
+        33
+      ]
+    }
+  }
+}
