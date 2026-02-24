@@ -1,0 +1,10 @@
+[workspace]
+id = "wsk1rsjpsvet"
+
+[site]
+exclude = [
+  ".git/**",
+  ".stencila/**",
+  "stencila.local.toml",
+]
+
